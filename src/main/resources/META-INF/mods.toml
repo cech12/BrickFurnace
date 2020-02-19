@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="https://github.com/cech12/BrickShears/issues"
+[[mods]]
+    modId="brickfurnace"
+    version="${file.jarVersion}"
+    displayName="Brick Furnace"
+    displayURL="https://github.com/cech12/BrickFurnace"
+    logoFile="logo.png"
+    authors="Cech12"
+    description='''
+    A mod which adds a Brick Furnace.
+    '''
