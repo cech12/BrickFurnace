@@ -1,8 +1,8 @@
 package cech12.brickfurnace.block;
 
-import cech12.brickfurnace.tileentity.BrickFurnaceTileEntity;
+import cech12.brickfurnace.tileentity.BrickBlastFurnaceTileEntity;
+import net.minecraft.block.BlastFurnaceBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.stats.Stats;
@@ -11,14 +11,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class BrickFurnaceBlock extends FurnaceBlock {
+public class BrickBlastFurnaceBlock extends BlastFurnaceBlock {
 
-    public BrickFurnaceBlock(Block.Properties builder) {
+    public BrickBlastFurnaceBlock(Block.Properties builder) {
         super(builder);
     }
 
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return new BrickFurnaceTileEntity();
+        return new BrickBlastFurnaceTileEntity();
     }
 
     /**
@@ -27,9 +27,9 @@ public class BrickFurnaceBlock extends FurnaceBlock {
      */
     protected void interactWith(World worldIn, BlockPos pos, PlayerEntity player) {
         TileEntity tileentity = worldIn.getTileEntity(pos);
-        if (tileentity instanceof BrickFurnaceTileEntity) {
+        if (tileentity instanceof BrickBlastFurnaceTileEntity) {
             player.openContainer((INamedContainerProvider)tileentity);
-            player.addStat(Stats.INTERACT_WITH_FURNACE);
+            player.addStat(Stats.INTERACT_WITH_BLAST_FURNACE);
         }
 
     }

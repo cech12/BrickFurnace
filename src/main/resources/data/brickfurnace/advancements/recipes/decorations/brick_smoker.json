@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "brickfurnace:blast_furnace"
+      "brickfurnace:brick_smoker"
     ]
   },
   "criteria": {
-    "has_smooth_stone": {
+    "has_furnace": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "minecraft:smooth_stone"
+            "item": "brickfurnace:brick_furnace"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "brickfurnace:blast_furnace"
+        "recipe": "brickfurnace:brick_smoker"
       }
     }
   },
   "requirements": [
     [
-      "has_smooth_stone",
+      "has_furnace",
       "has_the_recipe"
     ]
   ]

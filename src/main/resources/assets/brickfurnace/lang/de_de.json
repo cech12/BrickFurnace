@@ -1,3 +1,5 @@
 {
-  "block.brickfurnace.brick_furnace": "Ziegelofen"
+  "block.brickfurnace.brick_blast_furnace": "Ziegel-Schmelzofen",
+  "block.brickfurnace.brick_furnace": "Ziegelofen",
+  "block.brickfurnace.brick_smoker": "Ziegel-Räucherofen"
 }

@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable_with_bottom",
+    "textures": {
+        "bottom": "brickfurnace:block/brick_smoker_bottom",
+        "top": "brickfurnace:block/brick_smoker_top",
+        "front": "brickfurnace:block/brick_smoker_front",
+        "side": "brickfurnace:block/brick_smoker_side"
+    }
+}

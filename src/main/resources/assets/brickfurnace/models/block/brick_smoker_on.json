@@ -1,0 +1,19 @@
+{
+    "parent": "block/cube",
+    "display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+    "textures": {
+        "particle": "brickfurnace:block/brick_smoker_front_on",
+        "down": "brickfurnace:block/brick_smoker_bottom",
+        "up": "brickfurnace:block/brick_smoker_top",
+        "north": "brickfurnace:block/brick_smoker_front_on",
+        "east": "brickfurnace:block/brick_smoker_side",
+        "south": "brickfurnace:block/brick_smoker_side",
+        "west": "brickfurnace:block/brick_smoker_side"
+    }
+}

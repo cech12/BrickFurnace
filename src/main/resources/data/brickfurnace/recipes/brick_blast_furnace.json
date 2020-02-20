@@ -7,7 +7,7 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:smooth_stone"
+      "item": "minecraft:bricks"
     },
     "X": {
       "item": "brickfurnace:brick_furnace"
@@ -17,6 +17,6 @@
     }
   },
   "result": {
-    "item": "minecraft:blast_furnace"
+    "item": "brickfurnace:brick_blast_furnace"
   }
 }

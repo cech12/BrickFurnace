@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "brickfurnace:smoker"
+      "brickfurnace:brick_blast_furnace"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "brickfurnace:smoker"
+        "recipe": "brickfurnace:brick_blast_furnace"
       }
     }
   },
