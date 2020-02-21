@@ -2,7 +2,7 @@
 
 This is a **Minecraft Forge** mod for versions 1.14.4, 1.15.1, 1.15.2 and adds **Brick Furnaces** to the game.
 
-![All Furnaces](https://raw.githubusercontent.com/cech12/BrickFurnace/master/material/furnaces.png)
+![All Furnaces](https://raw.githubusercontent.com/cech12/BrickFurnace/master/material/all_furnaces.png)
 
 It adds a **Brick Furnace**, a **Brick Blast Furnace** and a **Brick Smoker**. They are looking different and have other crafting recipes, but they act like the vanilla equivalents.
 
@@ -12,6 +12,6 @@ It adds a **Brick Furnace**, a **Brick Blast Furnace** and a **Brick Smoker**. T
 
 ![Brick Smoker Crafting](https://raw.githubusercontent.com/cech12/BrickFurnace/master/material/smoker_crafting.png)
 
-**Brick Blast Furnace** and **Brick Smoker** are not workplaces for Villagers.
+Villagers do **not** use a **Brick Blast Furnace** or a **Brick Smoker** as workplace.
 
 For more information check out the **Wiki**: https://github.com/cech12/BrickFurnace/wiki
