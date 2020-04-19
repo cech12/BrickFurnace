@@ -11,3 +11,21 @@ issueTrackerURL="https://github.com/cech12/BrickShears/issues"
     description='''
     A mod which adds a Brick Furnace.
     '''
+[[dependencies.brickfurnace]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28.1,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.brickfurnace]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.brickfurnace]]
+   modId="jei"
+   mandatory=false
+   versionRange="[6.0.0.9,)"
+   ordering="NONE"
+   side="BOTH"
