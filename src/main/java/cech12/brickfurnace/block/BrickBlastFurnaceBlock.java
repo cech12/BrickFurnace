@@ -22,7 +22,7 @@ public class BrickBlastFurnaceBlock extends BlastFurnaceBlock {
     }
 
     /**
-     * Interface for handling interaction with blocks that impliment AbstractFurnaceBlock. Called in onBlockActivated
+     * Interface for handling interaction with blocks that implement AbstractFurnaceBlock. Called in onBlockActivated
      * inside AbstractFurnaceBlock.
      */
     protected void interactWith(World worldIn, BlockPos pos, PlayerEntity player) {
