@@ -1,6 +1,7 @@
 package cech12.brickfurnace.tileentity;
 
 import cech12.brickfurnace.api.tileentity.BrickFurnaceTileEntities;
+import cech12.brickfurnace.config.Config;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerInventory;
@@ -147,9 +148,10 @@ public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
 
     @Override
     protected int getCookTime() {
+        double timeFactor = Config.COOK_TIME_FACTOR.getValue();
         AbstractCookingRecipe rec = getRecipe();
-        if (rec == null) return 200;
-        return rec.getCookTime();
+        if (rec == null) return (int) (200 * timeFactor);
+        return (int) (rec.getCookTime() * timeFactor);
     }
 
     @SuppressWarnings("unchecked")
