@@ -88,7 +88,7 @@ public class BrickSmokerTileEntity extends AbstractFurnaceTileEntity {
                     this.furnaceData.set(COOK_TIME, this.furnaceData.get(COOK_TIME) + 1); //changed because of private variable
                     if (this.furnaceData.get(COOK_TIME) == this.furnaceData.get(COOK_TIME_TOTAL)) { //changed because of private variable
                         this.furnaceData.set(COOK_TIME, 0); //changed because of private variable
-                        this.furnaceData.set(COOK_TIME_TOTAL, this.func_214005_h()); //changed because of private variable
+                        this.furnaceData.set(COOK_TIME_TOTAL, this.getCookTime()); //changed because of private variable
                         this.smeltItem(irecipe);
                         dirty = true;
                     }
@@ -149,7 +149,7 @@ public class BrickSmokerTileEntity extends AbstractFurnaceTileEntity {
     }
 
     @Override
-    protected int func_214005_h() {
+    protected int getCookTime() {
         AbstractCookingRecipe rec = getRecipe();
         if (rec == null) return 200;
         return rec.getCookTime();

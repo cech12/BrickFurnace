@@ -11,21 +11,24 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public class BrickSmokerBlock extends SmokerBlock {
 
     public BrickSmokerBlock(Block.Properties builder) {
         super(builder);
     }
 
-    public TileEntity createNewTileEntity(IBlockReader worldIn) {
+    public TileEntity createNewTileEntity(@Nonnull IBlockReader worldIn) {
         return new BrickSmokerTileEntity();
     }
 
     /**
-     * Interface for handling interaction with blocks that impliment AbstractFurnaceBlock. Called in onBlockActivated
+     * Interface for handling interaction with blocks that implement AbstractFurnaceBlock. Called in onBlockActivated
      * inside AbstractFurnaceBlock.
      */
-    protected void interactWith(World worldIn, BlockPos pos, PlayerEntity player) {
+    @Override
+    protected void interactWith(World worldIn, @Nonnull BlockPos pos, @Nonnull PlayerEntity player) {
         TileEntity tileentity = worldIn.getTileEntity(pos);
         if (tileentity instanceof BrickSmokerTileEntity) {
             player.openContainer((INamedContainerProvider)tileentity);

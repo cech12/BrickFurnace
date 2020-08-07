@@ -12,19 +12,26 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.ToIntFunction;
 
 @Mod.EventBusSubscriber(modid= BrickFurnaceMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class ModBlocks {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        BrickFurnaceBlocks.BRICK_FURNACE = registerBlock("brick_furnace", ItemGroup.DECORATIONS, new BrickFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).lightValue(13)));
-        BrickFurnaceBlocks.BRICK_BLAST_FURNACE = registerBlock("brick_blast_furnace", ItemGroup.DECORATIONS, new BrickBlastFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).lightValue(13)));
-        BrickFurnaceBlocks.BRICK_SMOKER = registerBlock("brick_smoker", ItemGroup.DECORATIONS, new BrickSmokerBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).lightValue(13)));
+        BrickFurnaceBlocks.BRICK_FURNACE = registerBlock("brick_furnace", ItemGroup.DECORATIONS, new BrickFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
+        BrickFurnaceBlocks.BRICK_BLAST_FURNACE = registerBlock("brick_blast_furnace", ItemGroup.DECORATIONS, new BrickBlastFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
+        BrickFurnaceBlocks.BRICK_SMOKER = registerBlock("brick_smoker", ItemGroup.DECORATIONS, new BrickSmokerBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
+    }
+
+    private static ToIntFunction<BlockState> getLightLevelWhenLit(final int lightLevel) {
+        return (blockState) -> blockState.get(BlockStateProperties.LIT) ? lightLevel : 0;
     }
 
     public static Block registerBlock(String name, ItemGroup itemGroup, Block block) {
