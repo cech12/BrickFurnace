@@ -1,4 +1,4 @@
-# Brick Furnace [![Curseforge](http://cf.way2muchnoise.eu/full_brick-furnace_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/brick-furnace) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_brick-furnace_all.svg)](https://www.curseforge.com/minecraft/mc-mods/brick-furnace/files)
+# Brick Furnace [![Curseforge](http://cf.way2muchnoise.eu/full_brick-furnace_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/brick-furnace) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_brick-furnace_all.svg)](https://www.curseforge.com/minecraft/mc-mods/brick-furnace/files)  [![](https://img.shields.io/discord/752506676719910963.svg?style=flat&color=informational&logo=discord&label=Discord)](https://discord.gg/gRUFH5t) [![License](https://img.shields.io/github/license/cech12/BrickFurnace)](http://opensource.org/licenses/MIT)
 
 This is a **Minecraft Forge** mod for versions 1.14.4, 1.15.1, 1.15.2, 1.16.1, 1.16.2 and adds **Brick Furnaces** to the game.
 
