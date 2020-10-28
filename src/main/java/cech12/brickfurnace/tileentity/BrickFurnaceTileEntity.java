@@ -17,6 +17,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
@@ -25,11 +26,15 @@ public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
         super(BrickFurnaceTileEntities.BRICK_FURNACE, IRecipeType.SMELTING);
     }
 
+    @Override
+    @Nonnull
     protected ITextComponent getDefaultName() {
         return new TranslationTextComponent("block.brickfurnace.brick_furnace");
     }
 
-    protected Container createMenu(int id, PlayerInventory player) {
+    @Override
+    @Nonnull
+    protected Container createMenu(int id, @Nonnull PlayerInventory player) {
         return new FurnaceContainer(id, player, this, this.furnaceData);
     }
 
@@ -61,7 +66,7 @@ public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
             this.furnaceData.set(BURN_TIME, this.furnaceData.get(BURN_TIME) - 1); //changed because of private variable
         }
 
-        if (!this.world.isRemote) {
+        if (this.world != null && !this.world.isRemote) {
             ItemStack fuel = this.items.get(FUEL);
             if (this.isBurning() || !fuel.isEmpty() && !this.items.get(INPUT).isEmpty()) {
                 AbstractCookingRecipe irecipe = getRecipe();
@@ -134,7 +139,7 @@ public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
                 itemstack2.grow(itemstack1.getCount());
             }
 
-            if (!this.world.isRemote) {
+            if (this.world != null && !this.world.isRemote) {
                 this.setRecipeUsed(recipe);
             }
 
@@ -157,12 +162,21 @@ public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
     @SuppressWarnings("unchecked")
     protected AbstractCookingRecipe getRecipe() {
         ItemStack input = this.getStackInSlot(INPUT);
-        if (input.isEmpty() || input == failedMatch) return null;
-        if (curRecipe != null && curRecipe.matches(this, world)) return curRecipe;
-        else {
-            AbstractCookingRecipe rec = world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world).orElse(null);
-            if (rec == null) failedMatch = input;
-            else failedMatch = ItemStack.EMPTY;
+        if (input.isEmpty() || input == failedMatch) {
+            return null;
+        }
+        if (this.world != null && curRecipe != null && curRecipe.matches(this, world)) {
+            return curRecipe;
+        } else {
+            AbstractCookingRecipe rec = null;
+            if (this.world != null) {
+                rec = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world).orElse(null);
+            }
+            if (rec == null) {
+                failedMatch = input;
+            } else {
+                failedMatch = ItemStack.EMPTY;
+            }
             return curRecipe = rec;
         }
     }

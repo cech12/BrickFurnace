@@ -19,6 +19,7 @@ public class BrickFurnaceBlock extends FurnaceBlock {
         super(builder);
     }
 
+    @Override
     public TileEntity createNewTileEntity(@Nonnull IBlockReader worldIn) {
         return new BrickFurnaceTileEntity();
     }

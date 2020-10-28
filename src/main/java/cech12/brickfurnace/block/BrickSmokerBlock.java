@@ -19,6 +19,7 @@ public class BrickSmokerBlock extends SmokerBlock {
         super(builder);
     }
 
+    @Override
     public TileEntity createNewTileEntity(@Nonnull IBlockReader worldIn) {
         return new BrickSmokerTileEntity();
     }
