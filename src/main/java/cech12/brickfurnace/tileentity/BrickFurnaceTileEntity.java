@@ -153,7 +153,7 @@ public class BrickFurnaceTileEntity extends AbstractFurnaceTileEntity {
 
     @Override
     protected int getCookTime() {
-        double timeFactor = Config.COOK_TIME_FACTOR.getValue();
+        double timeFactor = Config.COOK_TIME_FACTOR.get();
         AbstractCookingRecipe rec = getRecipe();
         if (rec == null) return (int) (200 * timeFactor);
         return (int) (rec.getCookTime() * timeFactor);
