@@ -3,7 +3,7 @@ package cech12.brickfurnace.jei;
 import cech12.brickfurnace.BrickFurnaceMod;
 import cech12.brickfurnace.api.block.BrickFurnaceBlocks;
 import cech12.brickfurnace.api.crafting.RecipeTypes;
-import cech12.brickfurnace.config.Config;
+import cech12.brickfurnace.config.ServerConfig;
 import cech12.brickfurnace.crafting.BrickBlastingRecipe;
 import cech12.brickfurnace.crafting.BrickSmeltingRecipe;
 import cech12.brickfurnace.crafting.BrickSmokingRecipe;
@@ -42,17 +42,17 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
             registration.addRecipes(manager.func_241447_a_(RecipeTypes.SMOKING), RecipeTypes.SMOKING_ID);
             registration.addRecipes(manager.func_241447_a_(RecipeTypes.BLASTING), RecipeTypes.BLASTING_ID);
 
-            if (Config.VANILLA_RECIPES_ENABLED.get()) {
+            if (ServerConfig.VANILLA_RECIPES_ENABLED.get()) {
                 registration.addRecipes(manager.func_241447_a_(IRecipeType.SMELTING).stream()
-                        .filter(recipe -> Config.isRecipeNotBlacklisted(recipe.getId()))
+                        .filter(recipe -> ServerConfig.isRecipeNotBlacklisted(recipe.getId()))
                         .map(BrickSmeltingRecipe::convert)
                         .collect(Collectors.toList()), RecipeTypes.SMELTING_ID);
                 registration.addRecipes(manager.func_241447_a_(IRecipeType.SMOKING).stream()
-                        .filter(recipe -> Config.isRecipeNotBlacklisted(recipe.getId()))
+                        .filter(recipe -> ServerConfig.isRecipeNotBlacklisted(recipe.getId()))
                         .map(BrickSmokingRecipe::convert)
                         .collect(Collectors.toList()), RecipeTypes.SMOKING_ID);
                 registration.addRecipes(manager.func_241447_a_(IRecipeType.BLASTING).stream()
-                        .filter(recipe -> Config.isRecipeNotBlacklisted(recipe.getId()))
+                        .filter(recipe -> ServerConfig.isRecipeNotBlacklisted(recipe.getId()))
                         .map(BrickBlastingRecipe::convert)
                         .collect(Collectors.toList()), RecipeTypes.BLASTING_ID);
             }
