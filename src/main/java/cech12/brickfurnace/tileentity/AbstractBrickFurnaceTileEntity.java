@@ -1,6 +1,6 @@
 package cech12.brickfurnace.tileentity;
 
-import cech12.brickfurnace.config.Config;
+import cech12.brickfurnace.config.ServerConfig;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -145,7 +145,7 @@ public abstract class AbstractBrickFurnaceTileEntity extends AbstractFurnaceTile
         } else if (this.specificRecipeType.getClass().isInstance(rec.getType())) {
             return rec.getCookTime();
         }
-        return (int) (rec.getCookTime() * Config.COOK_TIME_FACTOR.get());
+        return (int) (rec.getCookTime() * ServerConfig.COOK_TIME_FACTOR.get());
     }
 
     @SuppressWarnings("unchecked")
@@ -160,9 +160,9 @@ public abstract class AbstractBrickFurnaceTileEntity extends AbstractFurnaceTile
             AbstractCookingRecipe rec = null;
             if (this.world != null) {
                 rec = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.specificRecipeType, this, this.world).orElse(null);
-                if (rec == null && Config.VANILLA_RECIPES_ENABLED.get()) {
+                if (rec == null && ServerConfig.VANILLA_RECIPES_ENABLED.get()) {
                     rec = this.world.getRecipeManager().getRecipes((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world)
-                            .stream().filter(abstractCookingRecipe -> Config.isRecipeNotBlacklisted(abstractCookingRecipe.getId())).findFirst().orElse(null);
+                            .stream().filter(abstractCookingRecipe -> ServerConfig.isRecipeNotBlacklisted(abstractCookingRecipe.getId())).findFirst().orElse(null);
                 }
             }
             if (rec == null) {

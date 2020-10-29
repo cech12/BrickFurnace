@@ -1,39 +1,41 @@
 package cech12.brickfurnace.config;
 
+import com.electronwill.nightconfig.core.file.CommentedFileConfig;
+import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class Config {
-    public static ForgeConfigSpec COMMON;
+import java.nio.file.Path;
+
+public class ServerConfig {
+    public static ForgeConfigSpec SERVER_CONFIG;
 
     public static final ForgeConfigSpec.BooleanValue VANILLA_RECIPES_ENABLED;
     public static final ForgeConfigSpec.DoubleValue COOK_TIME_FACTOR;
     public static final ForgeConfigSpec.ConfigValue<String> RECIPE_BLACKLIST;
 
-    public static final ForgeConfigSpec.BooleanValue CLAY_TO_BRICK_AT_CAMPFIRE;
-
     static {
-        final ForgeConfigSpec.Builder common = new ForgeConfigSpec.Builder();
+        final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
-        common.comment("Options that affect the added furnaces.").push("Furnace Settings");
-        VANILLA_RECIPES_ENABLED = common
+        builder.comment("Options that affect the added furnaces.").push("Furnace Settings");
+        VANILLA_RECIPES_ENABLED = builder
                 .comment("If enabled, the vanilla blasting, smelting, and smoking recipes are used by the brick furnaces.")
                 .define("vanillaRecipesEnabled", true);
-        COOK_TIME_FACTOR = common
+        COOK_TIME_FACTOR = builder
                 .comment("Cook time factor of all added brick furnaces in relation to corresponding vanilla furnaces. (i. e. 0.5 - half the time, 1.0 same time, 2.0 twice the time)")
                 .defineInRange("cookTimeFactor", 1.0, 0.0, 100.0);
-        RECIPE_BLACKLIST = common
+        RECIPE_BLACKLIST = builder
                 .comment("A comma separated list of all vanilla recipes that should not be used by the brick furnaces. Example: \"baked_potato,baked_potato_from_smoking,othermod:other_baked_food\"")
                 .define("recipeBlacklist", "");
-        common.pop();
+        builder.pop();
 
-        common.comment("Options that affect some game mechanics.").push("Game Mechanics");
-        CLAY_TO_BRICK_AT_CAMPFIRE = common
-                .comment("Enables the campfire recipe to make clay to bricks.")
-                .define("clayToBrickAtCampfireEnabled", false);
-        common.pop();
+        SERVER_CONFIG = builder.build();
+    }
 
-        COMMON = common.build();
+    public static void loadConfig(ForgeConfigSpec spec, Path path) {
+        final CommentedFileConfig configData = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE).build();
+        configData.load();
+        spec.setConfig(configData);
     }
 
     public static boolean isRecipeNotBlacklisted(final ResourceLocation id) {

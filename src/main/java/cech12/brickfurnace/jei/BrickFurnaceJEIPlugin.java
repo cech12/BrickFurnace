@@ -3,7 +3,7 @@ package cech12.brickfurnace.jei;
 import cech12.brickfurnace.BrickFurnaceMod;
 import cech12.brickfurnace.api.block.BrickFurnaceBlocks;
 import cech12.brickfurnace.api.crafting.RecipeTypes;
-import cech12.brickfurnace.config.Config;
+import cech12.brickfurnace.config.ServerConfig;
 import cech12.brickfurnace.crafting.BrickBlastingRecipe;
 import cech12.brickfurnace.crafting.BrickSmeltingRecipe;
 import cech12.brickfurnace.crafting.BrickSmokingRecipe;
@@ -45,17 +45,17 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
             registration.addRecipes(manager.getRecipes(RecipeTypes.SMOKING).values(), RecipeTypes.SMOKING_ID);
             registration.addRecipes(manager.getRecipes(RecipeTypes.BLASTING).values(), RecipeTypes.BLASTING_ID);
 
-            if (Config.VANILLA_RECIPES_ENABLED.get()) {
+            if (ServerConfig.VANILLA_RECIPES_ENABLED.get()) {
                 registration.addRecipes(manager.getRecipes(IRecipeType.SMELTING).values().stream()
-                        .filter(recipe -> Config.isRecipeNotBlacklisted(recipe.getId()) && recipe instanceof FurnaceRecipe)
+                        .filter(recipe -> ServerConfig.isRecipeNotBlacklisted(recipe.getId()) && recipe instanceof FurnaceRecipe)
                         .map(recipe -> BrickSmeltingRecipe.convert((FurnaceRecipe) recipe))
                         .collect(Collectors.toList()), RecipeTypes.SMELTING_ID);
                 registration.addRecipes(manager.getRecipes(IRecipeType.SMOKING).values().stream()
-                        .filter(recipe -> Config.isRecipeNotBlacklisted(recipe.getId()) && recipe instanceof SmokingRecipe)
+                        .filter(recipe -> ServerConfig.isRecipeNotBlacklisted(recipe.getId()) && recipe instanceof SmokingRecipe)
                         .map(recipe -> BrickSmokingRecipe.convert((SmokingRecipe) recipe))
                         .collect(Collectors.toList()), RecipeTypes.SMOKING_ID);
                 registration.addRecipes(manager.getRecipes(IRecipeType.BLASTING).values().stream()
-                        .filter(recipe -> Config.isRecipeNotBlacklisted(recipe.getId()) && recipe instanceof BlastingRecipe)
+                        .filter(recipe -> ServerConfig.isRecipeNotBlacklisted(recipe.getId()) && recipe instanceof BlastingRecipe)
                         .map(recipe -> BrickBlastingRecipe.convert((BlastingRecipe) recipe))
                         .collect(Collectors.toList()), RecipeTypes.BLASTING_ID);
             }

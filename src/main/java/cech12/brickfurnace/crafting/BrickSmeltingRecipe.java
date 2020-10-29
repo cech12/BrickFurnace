@@ -2,6 +2,7 @@ package cech12.brickfurnace.crafting;
 
 import cech12.brickfurnace.api.block.BrickFurnaceBlocks;
 import cech12.brickfurnace.api.crafting.RecipeTypes;
+import cech12.brickfurnace.config.ServerConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.AbstractCookingRecipe;
 import net.minecraft.item.crafting.CookingRecipeSerializer;
@@ -24,7 +25,7 @@ public class BrickSmeltingRecipe extends AbstractCookingRecipe {
     }
 
     public static BrickSmeltingRecipe convert(@Nonnull FurnaceRecipe recipe) {
-        return new BrickSmeltingRecipe(recipe.getId(), recipe.getGroup(), recipe.getIngredients().get(0), recipe.getRecipeOutput(), recipe.getExperience(), recipe.getCookTime());
+        return new BrickSmeltingRecipe(recipe.getId(), recipe.getGroup(), recipe.getIngredients().get(0), recipe.getRecipeOutput(), recipe.getExperience(), (int) (recipe.getCookTime() * ServerConfig.COOK_TIME_FACTOR.get()));
     }
 
     @Override
