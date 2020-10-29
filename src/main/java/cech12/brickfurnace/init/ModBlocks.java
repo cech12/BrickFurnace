@@ -25,9 +25,9 @@ public final class ModBlocks {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        BrickFurnaceBlocks.BRICK_FURNACE = registerBlock("brick_furnace", ItemGroup.DECORATIONS, new BrickFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
-        BrickFurnaceBlocks.BRICK_BLAST_FURNACE = registerBlock("brick_blast_furnace", ItemGroup.DECORATIONS, new BrickBlastFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
-        BrickFurnaceBlocks.BRICK_SMOKER = registerBlock("brick_smoker", ItemGroup.DECORATIONS, new BrickSmokerBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
+        BrickFurnaceBlocks.BRICK_FURNACE = registerBlock("brick_furnace", ItemGroup.DECORATIONS, new BrickFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
+        BrickFurnaceBlocks.BRICK_BLAST_FURNACE = registerBlock("brick_blast_furnace", ItemGroup.DECORATIONS, new BrickBlastFurnaceBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
+        BrickFurnaceBlocks.BRICK_SMOKER = registerBlock("brick_smoker", ItemGroup.DECORATIONS, new BrickSmokerBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).setRequiresTool().hardnessAndResistance(2.0F, 6.0F).setLightLevel(getLightLevelWhenLit(13))));
     }
 
     private static ToIntFunction<BlockState> getLightLevelWhenLit(final int lightLevel) {
