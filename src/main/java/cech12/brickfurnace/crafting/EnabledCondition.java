@@ -1,4 +1,4 @@
-package cech12.brickfurnace.helper;
+package cech12.brickfurnace.crafting;
 
 import cech12.brickfurnace.BrickFurnaceMod;
 import cech12.brickfurnace.config.Config;
