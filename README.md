@@ -12,6 +12,10 @@ It adds a **Brick Furnace**, a **Brick Blast Furnace** and a **Brick Smoker**. T
 
 ![Brick Smoker Crafting](https://raw.githubusercontent.com/cech12/BrickFurnace/master/material/smoker_crafting.png)
 
-Villagers do **not** use a **Brick Blast Furnace** or a **Brick Smoker** as workplace.
+Villagers **can** use a **Brick Blast Furnace** or a **Brick Smoker** as workplace.
+
+Vanilla recipes can be blacklisted or disabled. 
+
+Data packs can add special recipes for the brick furnaces.
 
 For more information check out the **Wiki**: https://github.com/cech12/BrickFurnace/wiki
