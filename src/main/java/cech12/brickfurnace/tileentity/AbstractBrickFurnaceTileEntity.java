@@ -139,10 +139,13 @@ public abstract class AbstractBrickFurnaceTileEntity extends AbstractFurnaceTile
 
     @Override
     protected int func_214005_h() {
-        double timeFactor = Config.COOK_TIME_FACTOR.get();
         AbstractCookingRecipe rec = getRecipe();
-        if (rec == null) return (int) (200 * timeFactor);
-        return (int) (rec.getCookTime() * timeFactor);
+        if (rec == null) {
+            return 200;
+        } else if (this.specificRecipeType.getClass().isInstance(rec.getType())) {
+            return rec.getCookTime();
+        }
+        return (int) (rec.getCookTime() * Config.COOK_TIME_FACTOR.get());
     }
 
     @SuppressWarnings("unchecked")
