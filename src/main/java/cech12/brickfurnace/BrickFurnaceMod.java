@@ -8,7 +8,6 @@ import cech12.brickfurnace.crafting.BrickSmokingRecipe;
 import cech12.brickfurnace.crafting.EnabledCondition;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.RegistryEvent;
@@ -36,17 +35,17 @@ public class BrickFurnaceMod {
         CraftingHelper.register(EnabledCondition.Serializer.INSTANCE);
 
         RecipeTypes.BLASTING = Registry.register(Registry.RECIPE_TYPE,
-                new ResourceLocation(BrickFurnaceMod.MOD_ID, "blasting"),
+                RecipeTypes.BLASTING_ID,
                 new IRecipeType<BrickBlastingRecipe>() {});
         ForgeRegistries.RECIPE_SERIALIZERS.register(BrickBlastingRecipe.SERIALIZER);
 
         RecipeTypes.SMELTING = Registry.register(Registry.RECIPE_TYPE,
-                new ResourceLocation(BrickFurnaceMod.MOD_ID, "smelting"),
+                RecipeTypes.SMELTING_ID,
                 new IRecipeType<BrickSmeltingRecipe>() {});
         ForgeRegistries.RECIPE_SERIALIZERS.register(BrickSmeltingRecipe.SERIALIZER);
 
         RecipeTypes.SMOKING = Registry.register(Registry.RECIPE_TYPE,
-                new ResourceLocation(BrickFurnaceMod.MOD_ID, "smoking"),
+                RecipeTypes.SMOKING_ID,
                 new IRecipeType<BrickSmokingRecipe>() {});
         ForgeRegistries.RECIPE_SERIALIZERS.register(BrickSmokingRecipe.SERIALIZER);
     }
