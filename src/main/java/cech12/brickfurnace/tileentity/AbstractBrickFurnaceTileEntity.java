@@ -157,9 +157,9 @@ public abstract class AbstractBrickFurnaceTileEntity extends AbstractFurnaceTile
             AbstractCookingRecipe rec = null;
             if (this.world != null) {
                 rec = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.specificRecipeType, this, this.world).orElse(null);
-                if (rec == null) { //TODO config to deactivate vanilla recipes
-                    rec = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world)
-                            .orElse(null);
+                if (rec == null && Config.VANILLA_RECIPES_ENABLED.get()) {
+                    rec = this.world.getRecipeManager().getRecipes((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world)
+                            .stream().filter(abstractCookingRecipe -> Config.isRecipeNotBlacklisted(abstractCookingRecipe.getId())).findFirst().orElse(null);
                 }
             }
             if (rec == null) {
