@@ -22,6 +22,7 @@ import net.minecraftforge.fml.loading.FMLConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static cech12.brickfurnace.BrickFurnaceMod.MOD_ID;
@@ -58,16 +59,18 @@ public class BrickFurnaceMod {
 
     @SubscribeEvent
     public static void registerVillagerWorkstations(RegistryEvent.Register<PointOfInterestType> event) {
-        for (BlockState state : getAllStates(BrickFurnaceBlocks.BRICK_BLAST_FURNACE)) {
-            PointOfInterestType.POIT_BY_BLOCKSTATE.put(state, PointOfInterestType.ARMORER);
-        }
-        for (BlockState state : getAllStates(BrickFurnaceBlocks.BRICK_SMOKER)) {
-            PointOfInterestType.POIT_BY_BLOCKSTATE.put(state, PointOfInterestType.BUTCHER);
-        }
+        addBlockStatesToPOIType(PointOfInterestType.ARMORER, BrickFurnaceBlocks.BRICK_BLAST_FURNACE);
+        addBlockStatesToPOIType(PointOfInterestType.BUTCHER, BrickFurnaceBlocks.BRICK_SMOKER);
     }
 
-    private static Set<BlockState> getAllStates(Block blockIn) {
-        return ImmutableSet.copyOf(blockIn.getStateContainer().getValidStates());
+    private static void addBlockStatesToPOIType(PointOfInterestType poiType, Block block) {
+        Set<BlockState> poiTypeStates = new HashSet<>(poiType.blockStates);
+        Set<BlockState> blockStates = new HashSet<>(block.getStateContainer().getValidStates());
+        poiTypeStates.addAll(blockStates);
+        poiType.blockStates = ImmutableSet.copyOf(poiTypeStates);
+        for (BlockState state : blockStates) {
+            PointOfInterestType.POIT_BY_BLOCKSTATE.put(state, poiType);
+        }
     }
 
 }
