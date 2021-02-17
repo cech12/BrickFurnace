@@ -10,7 +10,7 @@ license="The MIT License (MIT)"
     logoFile="logo.png"
     authors="Cech12"
     description='''
-    A mod which adds a Brick Furnace.
+    A mod which adds Brick Furnaces.
     '''
 [[dependencies.brickfurnace]]
     modId="forge"

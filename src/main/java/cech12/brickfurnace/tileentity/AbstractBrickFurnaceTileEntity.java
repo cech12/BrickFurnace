@@ -148,7 +148,6 @@ public abstract class AbstractBrickFurnaceTileEntity extends AbstractFurnaceTile
         return (int) (rec.getCookTime() * ServerConfig.COOK_TIME_FACTOR.get());
     }
 
-    @SuppressWarnings("unchecked")
     protected AbstractCookingRecipe getRecipe() {
         ItemStack input = this.getStackInSlot(INPUT);
         if (input.isEmpty() || input == failedMatch) {
@@ -159,9 +158,9 @@ public abstract class AbstractBrickFurnaceTileEntity extends AbstractFurnaceTile
         } else {
             AbstractCookingRecipe rec = null;
             if (this.world != null) {
-                rec = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.specificRecipeType, this, this.world).orElse(null);
+                rec = this.world.getRecipeManager().getRecipe(this.specificRecipeType, this, this.world).orElse(null);
                 if (rec == null && ServerConfig.VANILLA_RECIPES_ENABLED.get()) {
-                    rec = this.world.getRecipeManager().getRecipes((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world)
+                    rec = this.world.getRecipeManager().getRecipes(this.recipeType, this, this.world)
                             .stream().filter(abstractCookingRecipe -> ServerConfig.isRecipeNotBlacklisted(abstractCookingRecipe.getId())).findFirst().orElse(null);
                 }
             }
