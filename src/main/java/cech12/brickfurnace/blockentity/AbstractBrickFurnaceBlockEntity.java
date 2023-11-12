@@ -159,6 +159,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
             return null;
         }
         if (this.level != null && curRecipe != null && curRecipe.matches(this, level)) {
+            dataAccess.set(COOK_TIME_TOTAL, getTotalCookTime(curRecipe));
             return curRecipe;
         } else {
             AbstractCookingRecipe rec = null;
