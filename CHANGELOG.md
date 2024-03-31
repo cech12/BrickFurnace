@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Forge Recommended Versioning](https://mcforge.readthedocs.io/en/latest/conventions/versioning/).
 
+## [1.20.1-2.1.1.3] - 2024-03-31
+### Fixed
+- fuel consumption of Brick Smoker & Brick Blast Furnace were incorrect (thanks to t3chdelicious for the report)
+
 ## [1.20.1-2.1.1.2] - 2023-11-12
 ### Fixed
 - cook time factor was sometimes ignored (thanks to Lcannine for the report) #31
