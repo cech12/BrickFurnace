@@ -8,7 +8,7 @@
   ],
   "key": {
     "#": {
-      "tag": "forge:ingots/brick"
+      "item": "minecraft:bricks"
     },
     "X": {
       "item": "brickfurnace:brick_furnace"

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Forge Recommended Versioning](https://mcforge.readthedocs.io/en/latest/conventions/versioning/).
 
+## [1.20.4-3.1.2.1] - 2024-06-29
+### Fixed
+- crafting recipe of Brick Blast Furnace used bricks instead of brick blocks (all loaders)
+
 ## [1.20.4-3.1.2.0] - 2024-06-05
 ### Added
 - added Roughly Enough Items (REI) support (version 14.1.727) (all loaders)
