@@ -3,6 +3,10 @@
   "block.brickfurnace.brick_furnace": "Кирпичная печь",
   "block.brickfurnace.brick_smoker": "Кирпичная коптильня",
 
+  "item.brickfurnace.brick_blast_furnace": "Кирпичная плавильная печь",
+  "item.brickfurnace.brick_furnace": "Кирпичная печь",
+  "item.brickfurnace.brick_smoker": "Кирпичная коптильня",
+
   "top.brickfurnace.fuel": "Топливо",
   "top.brickfurnace.n_ticks": "%d ticks"
 }

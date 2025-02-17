@@ -1,6 +1,5 @@
 package de.cech12.brickfurnace;
 
-import de.cech12.brickfurnace.compat.TOPCompat;
 import de.cech12.brickfurnace.init.ModBlockEntityTypes;
 import de.cech12.brickfurnace.init.ModBlocks;
 import de.cech12.brickfurnace.init.ModItems;
@@ -9,7 +8,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -33,15 +31,15 @@ public class BrickFurnaceMod {
         CommonLoader.init();
 
         //The One Probe registration.
-        if (ModList.get().isLoaded("theoneprobe") && !ModList.get().isLoaded("topaddons")) {
-            TOPCompat.register();
-        }
+        //if (ModList.get().isLoaded("theoneprobe") && !ModList.get().isLoaded("topaddons")) {
+        //    TOPCompat.register();
+        //}
     }
 
     @SubscribeEvent
     public static void register(RegisterEvent event) {
         if (event.getRegistry() == BuiltInRegistries.POINT_OF_INTEREST_TYPE) {
-            event.register(BuiltInRegistries.POINT_OF_INTEREST_TYPE.key(), pointOfInterestTypeRegisterHelper -> CommonLoader.initPoiStates(BuiltInRegistries.POINT_OF_INTEREST_TYPE::get, BuiltInRegistries.POINT_OF_INTEREST_TYPE::getHolderOrThrow));
+            event.register(BuiltInRegistries.POINT_OF_INTEREST_TYPE.key(), pointOfInterestTypeRegisterHelper -> CommonLoader.initPoiStates(BuiltInRegistries.POINT_OF_INTEREST_TYPE::get));
         }
     }
 

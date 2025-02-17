@@ -3,6 +3,10 @@
   "block.brickfurnace.brick_furnace": "Brick Furnace",
   "block.brickfurnace.brick_smoker": "Brick Smoker",
 
+  "item.brickfurnace.brick_blast_furnace": "Brick Blast Furnace",
+  "item.brickfurnace.brick_furnace": "Brick Furnace",
+  "item.brickfurnace.brick_smoker": "Brick Smoker",
+
   "top.brickfurnace.fuel": "Fuel",
   "top.brickfurnace.n_ticks": "%d ticks",
 

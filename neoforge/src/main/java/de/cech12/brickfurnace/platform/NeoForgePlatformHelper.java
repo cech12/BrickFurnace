@@ -27,12 +27,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return stack.hasCraftingRemainingItem();
+        return stack.getCraftingRemainder() != null && !stack.getCraftingRemainder().isEmpty();
     }
 
     @Override
     public ItemStack getCraftingRemainingItem(ItemStack stack) {
-        return stack.getCraftingRemainingItem();
+        return stack.getCraftingRemainder();
     }
 
 }

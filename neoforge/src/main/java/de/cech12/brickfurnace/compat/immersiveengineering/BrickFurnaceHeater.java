@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.compat.immersiveengineering;
-
+/*
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import de.cech12.brickfurnace.blockentity.AbstractBrickFurnaceBlockEntity;
 import de.cech12.brickfurnace.blockentity.BrickFurnaceBlockEntity;
@@ -81,3 +81,4 @@ public class BrickFurnaceHeater implements ExternalHeaterHandler.IExternalHeatab
         }
     }
 }
+ */

@@ -3,6 +3,10 @@
   "block.brickfurnace.brick_furnace": "Ziegelofen",
   "block.brickfurnace.brick_smoker": "Ziegel-Räucherofen",
 
+  "item.brickfurnace.brick_blast_furnace": "Ziegel-Schmelzofen",
+  "item.brickfurnace.brick_furnace": "Ziegelofen",
+  "item.brickfurnace.brick_smoker": "Ziegel-Räucherofen",
+
   "top.brickfurnace.fuel": "Fuel",
   "top.brickfurnace.n_ticks": "%d ticks"
 }

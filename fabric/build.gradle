@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'maven-publish'
-    id 'fabric-loom' version '[1.7.4,1.8)'
+    id 'fabric-loom' version '[1.9,1.10)'
 }
 base {
     archivesName = "${mod_id}-fabric"
@@ -24,8 +24,8 @@ dependencies {
     }
     modImplementation("com.terraformersmc:modmenu:${mod_menu_version}")
 
-    modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-lib:${jei_version}")
+    //modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    //modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-lib:${jei_version}")
     //modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 
     modCompileOnlyApi("me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version")

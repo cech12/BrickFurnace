@@ -7,15 +7,9 @@
     "###"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:bricks"
-    },
-    "X": {
-      "item": "brickfurnace:brick_furnace"
-    },
-    "I": {
-      "tag": "c:ingots/iron"
-    }
+    "#": "minecraft:bricks",
+    "X": "brickfurnace:brick_furnace",
+    "I": "#c:ingots/iron"
   },
   "result": {
     "id": "brickfurnace:brick_blast_furnace"

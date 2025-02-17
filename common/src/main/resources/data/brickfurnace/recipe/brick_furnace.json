@@ -7,9 +7,7 @@
     "###"
   ],
   "key": {
-    "#": {
-      "tag": "forge:ingots/brick"
-    }
+    "#": "#c:bricks/normal"
   },
   "result": {
     "id": "brickfurnace:brick_furnace"

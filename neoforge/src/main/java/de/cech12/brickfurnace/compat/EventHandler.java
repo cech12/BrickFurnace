@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.compat;
-
+/*
 import de.cech12.brickfurnace.Constants;
 import de.cech12.brickfurnace.compat.immersiveengineering.ImmersiveEngineering;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -18,3 +18,4 @@ public class EventHandler {
     }
 
 }
+ */

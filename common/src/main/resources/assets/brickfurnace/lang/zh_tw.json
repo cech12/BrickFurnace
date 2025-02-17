@@ -1,5 +1,9 @@
 {
   "block.brickfurnace.brick_blast_furnace": "磚高爐",
   "block.brickfurnace.brick_furnace": "磚熔爐",
-  "block.brickfurnace.brick_smoker": "磚煙熏爐"
+  "block.brickfurnace.brick_smoker": "磚煙熏爐",
+
+  "item.brickfurnace.brick_blast_furnace": "磚高爐",
+  "item.brickfurnace.brick_furnace": "磚熔爐",
+  "item.brickfurnace.brick_smoker": "磚煙熏爐"
 }

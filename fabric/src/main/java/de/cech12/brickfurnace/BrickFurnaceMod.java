@@ -19,7 +19,7 @@ public class BrickFurnaceMod implements ModInitializer {
         ModRecipeTypes.init();
         CommonLoader.init();
         //init POI types
-        CommonLoader.initPoiStates(BuiltInRegistries.POINT_OF_INTEREST_TYPE::get, BuiltInRegistries.POINT_OF_INTEREST_TYPE::getHolderOrThrow);
+        CommonLoader.initPoiStates(BuiltInRegistries.POINT_OF_INTEREST_TYPE::get);
         //Register item in the creative tab.
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(content -> {
             content.accept(Constants.BRICK_FURNACE_ITEM.get());

@@ -1,6 +1,8 @@
 package de.cech12.brickfurnace.init;
 
 import de.cech12.brickfurnace.Constants;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -20,7 +22,7 @@ public class ModItems {
     }
 
     private static DeferredHolder<Item, Item> fromBlock(String name, Supplier<Block> block) {
-        return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), Constants.id(name)))));
     }
 
 }

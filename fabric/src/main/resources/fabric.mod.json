@@ -22,11 +22,11 @@
     "modmenu": [
       "de.cech12.brickfurnace.compat.ModMenuCompat"
     ],
-    "jei_mod_plugin": [
-      "de.cech12.brickfurnace.jei.BrickFurnaceJEIPlugin"
-    ],
     "rei_client": [
-      "de.cech12.brickfurnace.rei.BrickFurnaceReiClientPlugin"
+      "de.cech12.brickfurnace.client.BrickFurnaceReiClientPlugin"
+    ],
+    "rei_common": [
+      "de.cech12.brickfurnace.rei.BrickFurnaceReiCommonPlugin"
     ]
   },
   "mixins": [
@@ -41,7 +41,6 @@
   },
   "suggests": {
     "modmenu": ">=${mod_menu_version}",
-    "jei": ">=${jei_version}",
     "roughlyenoughitems": ">=${rei_version}"
   }
 }

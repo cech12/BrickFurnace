@@ -3,6 +3,7 @@ package de.cech12.brickfurnace.init;
 import de.cech12.brickfurnace.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -24,7 +25,7 @@ public class ModItems {
     public static void init() {}
 
     private static Item register(String name, Supplier<Block> block) {
-        return Registry.register(BuiltInRegistries.ITEM, Constants.id(name), new BlockItem(block.get(), new Item.Properties()));
+        return Registry.register(BuiltInRegistries.ITEM, Constants.id(name), new BlockItem(block.get(), new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), Constants.id(name)))));
     }
 
 }

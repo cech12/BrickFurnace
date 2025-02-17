@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.jei;
-
+/*
 import de.cech12.brickfurnace.Constants;
 import de.cech12.brickfurnace.crafting.BrickBlastingRecipe;
 import de.cech12.brickfurnace.platform.Services;
@@ -16,3 +16,4 @@ public class BrickBlastingCategory extends AbstractCookingCategory<BrickBlasting
     }
 
 }
+ */

@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
@@ -70,7 +71,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
             RecipeHolder<? extends AbstractCookingRecipe> irecipe = entity.getRecipe();
             boolean valid = entity.canBurn(irecipe);
             if (!entity.isBurning() && valid) {
-                entity.dataAccess.set(BURN_TIME, entity.getBurnDuration(fuel)); //changed because of private variable
+                entity.dataAccess.set(BURN_TIME, entity.getBurnDuration(Objects.requireNonNull(level.getServer()).fuelValues(), fuel)); //changed because of private variable
                 entity.dataAccess.set(RECIPES_USED, entity.dataAccess.get(BURN_TIME)); //changed because of private variable
                 if (entity.isBurning()) {
                     dirty = true;
@@ -111,8 +112,8 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
     }
 
     private boolean canBurn(@Nullable RecipeHolder<?> recipe) {
-        if (!this.items.get(0).isEmpty() && recipe != null) {
-            ItemStack recipeOutput = recipe.value().getResultItem(this.getLevel().registryAccess());
+        if (this.getLevel() != null && !this.items.getFirst().isEmpty() && recipe != null && recipe.value() instanceof AbstractCookingRecipe cookingRecipe) {
+            ItemStack recipeOutput = cookingRecipe.assemble(new SingleRecipeInput(this.items.getFirst()) , this.getLevel().registryAccess());
             if (!recipeOutput.isEmpty()) {
                 ItemStack output = this.items.get(OUTPUT);
                 if (output.isEmpty()) return true;
@@ -124,9 +125,9 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
     }
 
     private void smeltItem(@Nullable RecipeHolder<?> recipe) {
-        if (recipe != null && this.canBurn(recipe)) {
+        if (this.getLevel() != null && recipe != null && recipe.value() instanceof AbstractCookingRecipe cookingRecipe && this.canBurn(recipe)) {
             ItemStack itemstack = this.items.get(0);
-            ItemStack itemstack1 = recipe.value().getResultItem(this.getLevel().registryAccess());
+            ItemStack itemstack1 = cookingRecipe.assemble(new SingleRecipeInput(this.items.getFirst()), this.getLevel().registryAccess());
             ItemStack itemstack2 = this.items.get(2);
             if (itemstack2.isEmpty()) {
                 this.items.set(2, itemstack1.copy());
@@ -150,9 +151,9 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
         if (rec == null) {
             return 200;
         } else if (this.specificRecipeType.getClass().isInstance(rec.value().getType())) {
-            return rec.value().getCookingTime();
+            return rec.value().cookingTime();
         }
-        return (int) (rec.value().getCookingTime() * Services.CONFIG.getCookTimeFactor());
+        return (int) (rec.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
     }
 
     public RecipeHolder<? extends AbstractCookingRecipe> getRecipe() {
@@ -166,11 +167,16 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
             return curRecipe;
         } else {
             RecipeHolder<? extends AbstractCookingRecipe> rec = null;
-            if (this.level != null) {
-                rec = this.level.getRecipeManager().getRecipeFor(this.specificRecipeType, recipeInput, this.level).orElse(null);
+            if (this.level != null && this.level.getServer() != null) {
+                rec = this.level.getServer().getRecipeManager().getRecipeFor(this.specificRecipeType, recipeInput, this.level).orElse(null);
                 if (rec == null && Services.CONFIG.areVanillaRecipesEnabled()) {
-                    rec = this.level.getRecipeManager().getRecipesFor(this.vanillaRecipeType, recipeInput, this.level)
-                            .stream().filter(abstractCookingRecipe -> Services.CONFIG.isRecipeAllowed(abstractCookingRecipe.id())).findFirst().orElse(null);
+                    rec = this.level.getServer().getRecipeManager().getRecipes().stream()
+                            .filter(recipe -> recipe.value().getType() == this.vanillaRecipeType)
+                            .filter(recipe -> recipe.value() instanceof AbstractCookingRecipe)
+                            .map(recipe -> (RecipeHolder<AbstractCookingRecipe>) recipe)
+                            .filter(recipe -> recipe.value().matches(recipeInput, this.level))
+                            .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().location()))
+                            .findFirst().orElse(null);
                 }
             }
             if (rec == null) {

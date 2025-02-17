@@ -1,5 +1,9 @@
 {
   "block.brickfurnace.brick_blast_furnace": "벽돌 용광로",
   "block.brickfurnace.brick_furnace": "벽돌 화로",
-  "block.brickfurnace.brick_smoker": "벽돌 훈연기"
+  "block.brickfurnace.brick_smoker": "벽돌 훈연기",
+
+  "item.brickfurnace.brick_blast_furnace": "벽돌 용광로",
+  "item.brickfurnace.brick_furnace": "벽돌 화로",
+  "item.brickfurnace.brick_smoker": "벽돌 훈연기"
 }
