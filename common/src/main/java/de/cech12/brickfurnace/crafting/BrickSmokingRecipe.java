@@ -26,7 +26,7 @@ public class BrickSmokingRecipe extends AbstractCookingRecipe {
     }
 
     public static BrickSmokingRecipe convert(@Nonnull SmokingRecipe recipe, RegistryAccess registryAccess) {
-        return new BrickSmokingRecipe(recipe.group(), recipe.category(), recipe.input(), recipe.assemble(new SingleRecipeInput(new ItemStack(recipe.input().items().getFirst())), registryAccess), recipe.experience(), (int) (recipe.cookingTime() * Services.CONFIG.getCookTimeFactor()));
+        return new BrickSmokingRecipe(recipe.group(), recipe.category(), recipe.input(), recipe.assemble(new SingleRecipeInput(new ItemStack(recipe.input().items().findFirst().get())), registryAccess), recipe.experience(), (int) (recipe.cookingTime() * Services.CONFIG.getCookTimeFactor()));
     }
 
     @Override

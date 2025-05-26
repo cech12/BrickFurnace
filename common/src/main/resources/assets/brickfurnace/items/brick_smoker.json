@@ -1,0 +1,6 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "brickfurnace:item/brick_smoker"
+    }
+}
