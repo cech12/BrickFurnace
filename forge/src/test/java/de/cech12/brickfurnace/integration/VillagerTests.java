@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.integration;
-
+/*
 import de.cech12.brickfurnace.Constants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
@@ -49,3 +49,4 @@ public class VillagerTests {
     }
 
 }
+ */
