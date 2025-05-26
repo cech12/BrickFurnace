@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [this versioning scheme](https://gist.github.com/cech12/69319028e88c50349a6b044000a6607b).
 
-## [1.21.5-4.5.0.0] - 2025-04-25
+## [1.21.5-4.5.0.0] - 2025-04-26
 ### Changed
 - updated to Minecraft 1.21.5 (Fabric 0.120.0+1.21.5, NeoForge 21.5.47-beta, Forge 55.0.21)
 - updated Cloth Config support (18.0.145) (Fabric/Quilt)
