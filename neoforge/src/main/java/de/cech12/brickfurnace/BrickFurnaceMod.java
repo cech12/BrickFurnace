@@ -18,7 +18,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 @SuppressWarnings("unused")
 @Mod(Constants.MOD_ID)
-@EventBusSubscriber(modid= Constants.MOD_ID, bus= EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid= Constants.MOD_ID)
 public class BrickFurnaceMod {
 
     public BrickFurnaceMod(IEventBus eventBus) {
