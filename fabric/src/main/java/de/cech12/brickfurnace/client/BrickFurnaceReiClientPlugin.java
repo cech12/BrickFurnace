@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.client;
-/*
+
 import de.cech12.brickfurnace.Constants;
 import de.cech12.brickfurnace.platform.Services;
 import de.cech12.brickfurnace.rei.BrickFurnaceReiCommonPlugin;
@@ -31,4 +31,3 @@ public class BrickFurnaceReiClientPlugin implements REIClientPlugin {
     }
 
 }
- */

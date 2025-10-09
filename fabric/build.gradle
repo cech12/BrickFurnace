@@ -28,10 +28,10 @@ dependencies {
     //modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-lib:${jei_version}")
     //modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 
-    //modCompileOnlyApi("me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version")
-    //modCompileOnlyApi("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version")
-    //modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:$rei_version"
-    //modImplementation "dev.architectury:architectury-fabric:$architectury_version"
+    modCompileOnlyApi("me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version")
+    modCompileOnlyApi("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version")
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:$rei_version"
+    modImplementation "dev.architectury:architectury-fabric:$architectury_version"
 
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     compileOnly project(":common")

@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.rei;
-/*
+
 import de.cech12.brickfurnace.Constants;
 import de.cech12.brickfurnace.crafting.BrickBlastingRecipe;
 import de.cech12.brickfurnace.crafting.BrickSmeltingRecipe;
@@ -125,4 +125,3 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
     }
 
 }
- */
