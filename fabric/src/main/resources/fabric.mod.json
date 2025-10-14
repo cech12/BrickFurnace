@@ -21,12 +21,6 @@
     ],
     "modmenu": [
       "de.cech12.brickfurnace.compat.ModMenuCompat"
-    ],
-    "rei_client": [
-      "de.cech12.brickfurnace.client.BrickFurnaceReiClientPlugin"
-    ],
-    "rei_common": [
-      "de.cech12.brickfurnace.rei.BrickFurnaceReiCommonPlugin"
     ]
   },
   "mixins": [

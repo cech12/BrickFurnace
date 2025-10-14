@@ -62,7 +62,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
             entity.dataAccess.set(BURN_TIME, entity.dataAccess.get(BURN_TIME) - 1); //changed because of private variable
         }
 
-        if (level == null || level.isClientSide) {
+        if (level == null || level.isClientSide()) {
             return;
         }
 
@@ -135,7 +135,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
                 itemstack2.grow(itemstack1.getCount());
             }
 
-            if (this.level != null && !this.level.isClientSide) {
+            if (this.level != null && !this.level.isClientSide()) {
                 this.setRecipeUsed(recipe);
             }
 

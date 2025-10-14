@@ -13,8 +13,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import net.neoforged.neoforge.registries.RegisterEvent;
+import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
 
 @SuppressWarnings("unused")
 @Mod(Constants.MOD_ID)
@@ -45,9 +45,9 @@ public class BrickFurnaceMod {
 
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, Constants.BRICK_FURNACE_BLOCK_ENTITY_TYPE.get(), SidedInvWrapper::new);
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, Constants.BRICK_BLAST_FURNACE_BLOCK_ENTITY_TYPE.get(), SidedInvWrapper::new);
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, Constants.BRICK_SMOKER_BLOCK_ENTITY_TYPE.get(), SidedInvWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, Constants.BRICK_FURNACE_BLOCK_ENTITY_TYPE.get(), (blockEntity, side) -> VanillaContainerWrapper.of(blockEntity));
+        event.registerBlockEntity(Capabilities.Item.BLOCK, Constants.BRICK_BLAST_FURNACE_BLOCK_ENTITY_TYPE.get(), (blockEntity, side) -> VanillaContainerWrapper.of(blockEntity));
+        event.registerBlockEntity(Capabilities.Item.BLOCK, Constants.BRICK_SMOKER_BLOCK_ENTITY_TYPE.get(), (blockEntity, side) -> VanillaContainerWrapper.of(blockEntity));
     }
 
     @SubscribeEvent

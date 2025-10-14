@@ -22,7 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Mod(Constants.MOD_ID)
-@Mod.EventBusSubscriber(modid= Constants.MOD_ID, bus= Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid=Constants.MOD_ID)
 public class BrickFurnaceMod {
 
     public BrickFurnaceMod(FMLJavaModLoadingContext context) {
