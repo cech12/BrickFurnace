@@ -15,13 +15,17 @@
   "license": "${mod_license}",
   "icon": "logo.png",
   "environment": "*",
+  "accessWidener": "${mod_id}.accesswidener",
   "entrypoints": {
     "main": [
       "de.cech12.brickfurnace.BrickFurnaceMod"
     ],
     "modmenu": [
       "de.cech12.brickfurnace.compat.ModMenuCompat"
-    ]
+    ],
+      "jei_mod_plugin": [
+          "${group}.jei.BrickFurnaceJEIPlugin"
+      ]
   },
   "mixins": [
     "${mod_id}.mixins.json"

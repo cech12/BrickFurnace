@@ -5,11 +5,15 @@ import de.cech12.brickfurnace.init.ModBlocks;
 import de.cech12.brickfurnace.init.ModItems;
 import de.cech12.brickfurnace.init.ModRecipeTypes;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.CreativeModeTabs;
 
 public class BrickFurnaceMod implements ModInitializer {
+
+    private static MinecraftServer serverInstance;
 
     @Override
     public void onInitialize() {
@@ -26,6 +30,12 @@ public class BrickFurnaceMod implements ModInitializer {
             content.accept(Constants.BRICK_BLAST_FURNACE_ITEM.get());
             content.accept(Constants.BRICK_SMOKER_ITEM.get());
         });
+        //register server instance listener
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> serverInstance = server);
+    }
+
+    public static MinecraftServer getServer() {
+        return serverInstance;
     }
 
 }
