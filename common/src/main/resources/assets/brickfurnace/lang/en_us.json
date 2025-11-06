@@ -22,6 +22,14 @@
   "text.autoconfig.brickfurnace.option.COOK_TIME_FACTOR.@Tooltip[4]": "§7§oMin: 0; Max: 10000",
   "text.autoconfig.brickfurnace.option.COOK_TIME_FACTOR.@Tooltip[5]": "§7§oDefault: 100",
 
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR": "Burn time factor",
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR.@Tooltip[0]": "§6§lBurn time factor",
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR.@Tooltip[1]": "Burn time factor (fuel efficiency) of all added brick furnaces",
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR.@Tooltip[2]": "in relation to corresponding vanilla furnaces. (percent)",
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR.@Tooltip[3]": "§7§o50 - half the time [less efficient], 200 twice the time [more efficient]",
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR.@Tooltip[4]": "§7§oMin: 0; Max: 10000",
+  "text.autoconfig.brickfurnace.option.BURN_TIME_FACTOR.@Tooltip[5]": "§7§oDefault: 100 [same time]",
+
   "text.autoconfig.brickfurnace.option.RECIPE_BLOCKED_LIST": "Recipe blocked list",
   "text.autoconfig.brickfurnace.option.RECIPE_BLOCKED_LIST.@Tooltip[0]": "§6§lRecipe blocked list",
   "text.autoconfig.brickfurnace.option.RECIPE_BLOCKED_LIST.@Tooltip[1]": "A comma separated list of all vanilla recipes that",

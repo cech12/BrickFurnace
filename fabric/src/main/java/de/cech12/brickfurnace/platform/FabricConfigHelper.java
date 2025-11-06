@@ -20,6 +20,9 @@ public class FabricConfigHelper implements ConfigData, IConfigHelper {
     @ConfigEntry.Gui.Tooltip(count = 6)
     public long COOK_TIME_FACTOR = (long) (COOK_TIME_FACTOR_DEFAULT * 100);
 
+    @ConfigEntry.Gui.Tooltip(count = 6)
+    public long BURN_TIME_FACTOR = (long) (BURN_TIME_FACTOR_DEFAULT * 100);
+
     @ConfigEntry.Gui.Tooltip(count = 5)
     public String RECIPE_BLOCKED_LIST = RECIPE_BLOCKED_LIST_DEFAULT;
 
@@ -40,6 +43,11 @@ public class FabricConfigHelper implements ConfigData, IConfigHelper {
     @Override
     public double getCookTimeFactor() {
         return Math.clamp(getConfig().COOK_TIME_FACTOR / 100D, COOK_TIME_FACTOR_MIN, COOK_TIME_FACTOR_MAX);
+    }
+
+    @Override
+    public double getBurnTimeFactor() {
+        return Math.clamp(getConfig().BURN_TIME_FACTOR / 100D, BURN_TIME_FACTOR_MIN, BURN_TIME_FACTOR_MAX);
     }
 
     @Override

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Forge Recommended Versioning](https://mcforge.readthedocs.io/en/latest/conventions/versioning/).
 
+## [1.21.1-4.2.1.0] - 2025-11-06
+### Added
+- burn time (fuel efficiency) can now be configured (all loaders) (thanks to Phyne_ for the idea) #47
+
 ## [1.21.1-4.2.0.0] - 2024-10-27
 ### Changed
 - updated to Minecraft 1.21.1 (Fabric 0.105.0+1.21.1, Neoforge 21.1.62, Forge 52.0.21)
