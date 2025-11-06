@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [this versioning scheme](https://gist.github.com/cech12/69319028e88c50349a6b044000a6607b).
 
+## [1.21.7-4.7.1.0] - 2025-11-11
+### Added
+- burn time (fuel efficiency) can now be configured (all loaders) (thanks to Phyne_ for the idea) #47
+
 ## [1.21.7-4.7.0.0] - 2025-10-09
 - updated to Minecraft 1.21.7 (Fabric 0.129.0+1.21.7, NeoForge 21.7.21-beta, Forge 57.0.3)
 - updated Cloth Config support (19.0.147) (Fabric/Quilt)
