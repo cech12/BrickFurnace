@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [this versioning scheme](https://gist.github.com/cech12/69319028e88c50349a6b044000a6607b).
 
+## [1.21.4-4.4.2.0] - 2025-11-11
+### Added
+- burn time (fuel efficiency) can now be configured (all loaders) (thanks to Phyne_ for the idea) #47
+
 ## [1.21.4-4.4.1.0] - 2025-10-09
 - updated NeoForge to 21.4.121
 - re-added JEI support (20.0.0.4) (NeoForge)

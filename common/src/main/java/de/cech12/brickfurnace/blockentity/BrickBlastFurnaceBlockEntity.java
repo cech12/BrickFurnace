@@ -28,7 +28,7 @@ public class BrickBlastFurnaceBlockEntity extends AbstractBrickFurnaceBlockEntit
 
     @Override
     protected int getBurnDuration(@Nonnull FuelValues fuelValues, @Nonnull ItemStack stack) {
-        return (int) (super.getBurnDuration(fuelValues, stack) * (0.5D * Services.CONFIG.getCookTimeFactor()));
+        return (int) (super.getBurnDuration(fuelValues, stack) * Services.CONFIG.getBurnTimeFactor() * (0.5D * Services.CONFIG.getCookTimeFactor()));
     }
 
     @Override
