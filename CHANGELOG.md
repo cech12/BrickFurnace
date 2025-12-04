@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [this versioning scheme](https://gist.github.com/cech12/69319028e88c50349a6b044000a6607b).
 
+## [1.21.10-4.9.2.0] - 2025-12-04
+### Added
+- re-added REI support (21.9.812) (Fabric/Quilt & NeoForge)
+
 ## [1.21.10-4.9.1.0] - 2025-11-11
 ### Added
 - burn time (fuel efficiency) can now be configured (all loaders) (thanks to Phyne_ for the idea) #47
