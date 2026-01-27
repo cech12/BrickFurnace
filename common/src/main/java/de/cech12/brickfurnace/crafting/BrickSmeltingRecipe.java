@@ -13,9 +13,7 @@ import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class BrickSmeltingRecipe extends AbstractCookingRecipe {
 
@@ -25,18 +23,18 @@ public class BrickSmeltingRecipe extends AbstractCookingRecipe {
         super(p_i50031_2_, category, p_i50031_3_, p_i50031_4_, p_i50031_5_, p_i50031_6_);
     }
 
-    public static BrickSmeltingRecipe convert(@Nonnull SmeltingRecipe recipe, RegistryAccess registryAccess) {
+    public static BrickSmeltingRecipe convert(@NotNull SmeltingRecipe recipe, RegistryAccess registryAccess) {
         return new BrickSmeltingRecipe(recipe.group(), recipe.category(), recipe.input(), recipe.assemble(new SingleRecipeInput(new ItemStack(recipe.input().items().findFirst().get())), registryAccess), recipe.experience(), (int) (recipe.cookingTime() * Services.CONFIG.getCookTimeFactor()));
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeType<? extends AbstractCookingRecipe> getType() {
         return Constants.SMELTING_RECIPE_TYPE.get();
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeBookCategory recipeBookCategory() {
         return switch (this.category()) {
             case BLOCKS -> RecipeBookCategories.FURNACE_BLOCKS;
@@ -46,13 +44,13 @@ public class BrickSmeltingRecipe extends AbstractCookingRecipe {
     }
 
     @Override
-    @Nonnull
+    @NotNull
     protected Item furnaceIcon() {
         return Constants.BRICK_FURNACE_BLOCK.get().asItem();
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer() {
         return SERIALIZER;
     }

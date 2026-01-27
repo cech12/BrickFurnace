@@ -14,8 +14,7 @@ import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class BrickBlastingRecipe extends AbstractCookingRecipe {
 
@@ -25,18 +24,18 @@ public class BrickBlastingRecipe extends AbstractCookingRecipe {
         super(p_i50031_2_, category, p_i50031_3_, p_i50031_4_, p_i50031_5_, p_i50031_6_);
     }
 
-    public static BrickBlastingRecipe convert(@Nonnull BlastingRecipe recipe, RegistryAccess registryAccess) {
+    public static BrickBlastingRecipe convert(@NotNull BlastingRecipe recipe, RegistryAccess registryAccess) {
         return new BrickBlastingRecipe(recipe.group(), recipe.category(), recipe.input(), recipe.assemble(new SingleRecipeInput(new ItemStack(recipe.input().items().findFirst().get())), registryAccess), recipe.experience(), (int) (recipe.cookingTime() * Services.CONFIG.getCookTimeFactor()));
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeType<? extends AbstractCookingRecipe> getType() {
         return Constants.BLASTING_RECIPE_TYPE.get();
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeBookCategory recipeBookCategory() {
         return switch (this.category()) {
             case BLOCKS -> RecipeBookCategories.BLAST_FURNACE_BLOCKS;
@@ -45,13 +44,13 @@ public class BrickBlastingRecipe extends AbstractCookingRecipe {
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public Item furnaceIcon() {
         return Constants.BRICK_BLAST_FURNACE_BLOCK.get().asItem();
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer() {
         return RecipeSerializer.BLASTING_RECIPE;
     }

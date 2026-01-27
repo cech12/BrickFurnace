@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
@@ -175,7 +175,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
                             .filter(recipe -> recipe.value() instanceof AbstractCookingRecipe)
                             .map(recipe -> (RecipeHolder<AbstractCookingRecipe>) recipe)
                             .filter(recipe -> recipe.value().matches(recipeInput, this.level))
-                            .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().location()))
+                            .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
                             .findFirst().orElse(null);
                 }
             }

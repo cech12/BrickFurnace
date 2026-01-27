@@ -11,8 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.block.state.BlockState;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class BrickSmokerBlockEntity extends AbstractBrickFurnaceBlockEntity {
 
@@ -21,19 +20,19 @@ public class BrickSmokerBlockEntity extends AbstractBrickFurnaceBlockEntity {
     }
 
     @Override
-    @Nonnull
+    @NotNull
     protected Component getDefaultName() {
         return Component.translatable("block.brickfurnace.brick_smoker");
     }
 
     @Override
-    protected int getBurnDuration(@Nonnull FuelValues fuelValues, @Nonnull ItemStack stack) {
+    protected int getBurnDuration(@NotNull FuelValues fuelValues, @NotNull ItemStack stack) {
         return (int) (super.getBurnDuration(fuelValues, stack) * Services.CONFIG.getBurnTimeFactor() * (0.5D * Services.CONFIG.getCookTimeFactor()));
     }
 
     @Override
-    @Nonnull
-    protected AbstractContainerMenu createMenu(int id, @Nonnull Inventory player) {
+    @NotNull
+    protected AbstractContainerMenu createMenu(int id, @NotNull Inventory player) {
         return new SmokerMenu(id, player, this, this.dataAccess);
     }
 

@@ -44,7 +44,7 @@ public class BrickFurnaceMod {
 
                 Set<BlockState> addedStates = new HashSet<>(Constants.BRICK_BLAST_FURNACE_BLOCK.get().getStateDefinition().getPossibleStates());
                 Set<BlockState> newStates = new HashSet<>();
-                newStates.addAll(((PoiTypeAccessor)(Object)ForgeRegistries.POI_TYPES.getValue(PoiTypes.ARMORER.location())).getMatchingStates());
+                newStates.addAll(((PoiTypeAccessor)(Object)ForgeRegistries.POI_TYPES.getValue(PoiTypes.ARMORER.identifier())).getMatchingStates());
                 newStates.addAll(addedStates);
                 PoiType pointOfInterestType = new PoiType(newStates, 1, 1);
                 ForgeRegistries.POI_TYPES.register("minecraft:armorer", pointOfInterestType);
@@ -52,7 +52,7 @@ public class BrickFurnaceMod {
 
                 addedStates = new HashSet<>(Constants.BRICK_SMOKER_BLOCK.get().getStateDefinition().getPossibleStates());
                 newStates = new HashSet<>();
-                newStates.addAll(((PoiTypeAccessor)(Object)ForgeRegistries.POI_TYPES.getValue(PoiTypes.BUTCHER.location())).getMatchingStates());
+                newStates.addAll(((PoiTypeAccessor)(Object)ForgeRegistries.POI_TYPES.getValue(PoiTypes.BUTCHER.identifier())).getMatchingStates());
                 newStates.addAll(addedStates);
                 pointOfInterestType = new PoiType(newStates, 1, 1);
                 ForgeRegistries.POI_TYPES.register("minecraft:butcher", pointOfInterestType);

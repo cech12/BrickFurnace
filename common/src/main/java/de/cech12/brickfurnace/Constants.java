@@ -4,7 +4,7 @@ import de.cech12.brickfurnace.blockentity.AbstractBrickFurnaceBlockEntity;
 import de.cech12.brickfurnace.crafting.BrickBlastingRecipe;
 import de.cech12.brickfurnace.crafting.BrickSmeltingRecipe;
 import de.cech12.brickfurnace.crafting.BrickSmokingRecipe;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
@@ -52,8 +52,8 @@ public class Constants {
 
     private Constants() {}
 
-    public static ResourceLocation id(String name) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    public static Identifier id(String name) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, name);
     }
 
 }

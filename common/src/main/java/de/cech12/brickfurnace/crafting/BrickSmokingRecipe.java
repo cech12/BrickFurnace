@@ -14,8 +14,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.item.crafting.SmokingRecipe;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 public class BrickSmokingRecipe extends AbstractCookingRecipe {
 
@@ -25,12 +24,12 @@ public class BrickSmokingRecipe extends AbstractCookingRecipe {
         super(p_i50031_2_, category, p_i50031_3_, p_i50031_4_, p_i50031_5_, p_i50031_6_);
     }
 
-    public static BrickSmokingRecipe convert(@Nonnull SmokingRecipe recipe, RegistryAccess registryAccess) {
+    public static BrickSmokingRecipe convert(@NotNull SmokingRecipe recipe, RegistryAccess registryAccess) {
         return new BrickSmokingRecipe(recipe.group(), recipe.category(), recipe.input(), recipe.assemble(new SingleRecipeInput(new ItemStack(recipe.input().items().findFirst().get())), registryAccess), recipe.experience(), (int) (recipe.cookingTime() * Services.CONFIG.getCookTimeFactor()));
     }
 
     @Override
-    @Nonnull
+    @NotNull
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer() {
         return SERIALIZER;
     }
@@ -46,7 +45,7 @@ public class BrickSmokingRecipe extends AbstractCookingRecipe {
     }
 
     @Override
-    @Nonnull
+    @NotNull
     protected Item furnaceIcon() {
         return Constants.BRICK_SMOKER_BLOCK.get().asItem();
     }

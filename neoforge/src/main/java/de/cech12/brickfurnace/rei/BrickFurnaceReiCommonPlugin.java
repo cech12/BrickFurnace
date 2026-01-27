@@ -15,7 +15,7 @@ import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.forge.REIPluginCommon;
 import me.shedaniel.rei.plugin.common.displays.cooking.DefaultCookingDisplay;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.BlastingRecipe;
@@ -43,9 +43,9 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
         registry.beginRecipeFiller(BrickSmokingRecipe.class).filterType(Constants.SMOKING_RECIPE_TYPE.get()).fill(BrickSmokingDisplay::new);
         registry.beginRecipeFiller(BrickBlastingRecipe.class).filterType(Constants.BLASTING_RECIPE_TYPE.get()).fill(BrickBlastingDisplay::new);
         if (Services.CONFIG.areVanillaRecipesEnabled()) {
-            registry.beginRecipeFiller(SmeltingRecipe.class).filterType(RecipeType.SMELTING).filter(recipeHolder -> Services.CONFIG.isRecipeAllowed(recipeHolder.id().location())).fill(BrickSmeltingDisplay::new);
-            registry.beginRecipeFiller(SmokingRecipe.class).filterType(RecipeType.SMOKING).filter(recipeHolder -> Services.CONFIG.isRecipeAllowed(recipeHolder.id().location())).fill(BrickSmokingDisplay::new);
-            registry.beginRecipeFiller(BlastingRecipe.class).filterType(RecipeType.BLASTING).filter(recipeHolder -> Services.CONFIG.isRecipeAllowed(recipeHolder.id().location())).fill(BrickBlastingDisplay::new);
+            registry.beginRecipeFiller(SmeltingRecipe.class).filterType(RecipeType.SMELTING).filter(recipeHolder -> Services.CONFIG.isRecipeAllowed(recipeHolder.id().identifier())).fill(BrickSmeltingDisplay::new);
+            registry.beginRecipeFiller(SmokingRecipe.class).filterType(RecipeType.SMOKING).filter(recipeHolder -> Services.CONFIG.isRecipeAllowed(recipeHolder.id().identifier())).fill(BrickSmokingDisplay::new);
+            registry.beginRecipeFiller(BlastingRecipe.class).filterType(RecipeType.BLASTING).filter(recipeHolder -> Services.CONFIG.isRecipeAllowed(recipeHolder.id().identifier())).fill(BrickBlastingDisplay::new);
         }
     }
 
@@ -60,10 +60,10 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
 
         public BrickSmeltingDisplay(RecipeHolder<? extends AbstractCookingRecipe> recipe) {
             super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value())), null))),
-                    Optional.of(recipe.id().location()), recipe.value().experience(), recipe.value() instanceof BrickSmeltingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
+                    Optional.of(recipe.id().identifier()), recipe.value().experience(), recipe.value() instanceof BrickSmeltingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
 
-        public BrickSmeltingDisplay(List<EntryIngredient> input, List<EntryIngredient> output, Optional<ResourceLocation> id, float xp, double cookTime) {
+        public BrickSmeltingDisplay(List<EntryIngredient> input, List<EntryIngredient> output, Optional<Identifier> id, float xp, double cookTime) {
             super(input, output, id, xp, cookTime);
         }
 
@@ -83,10 +83,10 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
 
         public BrickSmokingDisplay(RecipeHolder<? extends AbstractCookingRecipe> recipe) {
             super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value())), null))),
-                    Optional.of(recipe.id().location()), recipe.value().experience(), recipe.value() instanceof BrickSmokingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
+                    Optional.of(recipe.id().identifier()), recipe.value().experience(), recipe.value() instanceof BrickSmokingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
 
-        public BrickSmokingDisplay(List<EntryIngredient> input, List<EntryIngredient> output, Optional<ResourceLocation> id, float xp, double cookTime) {
+        public BrickSmokingDisplay(List<EntryIngredient> input, List<EntryIngredient> output, Optional<Identifier> id, float xp, double cookTime) {
             super(input, output, id, xp, cookTime);
         }
 
@@ -106,10 +106,10 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
 
         public BrickBlastingDisplay(RecipeHolder<? extends AbstractCookingRecipe> recipe) {
             super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value())), null))),
-                    Optional.of(recipe.id().location()), recipe.value().experience(), recipe.value() instanceof BrickBlastingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
+                    Optional.of(recipe.id().identifier()), recipe.value().experience(), recipe.value() instanceof BrickBlastingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
 
-        public BrickBlastingDisplay(List<EntryIngredient> input, List<EntryIngredient> output, Optional<ResourceLocation> id, float xp, double cookTime) {
+        public BrickBlastingDisplay(List<EntryIngredient> input, List<EntryIngredient> output, Optional<Identifier> id, float xp, double cookTime) {
             super(input, output, id, xp, cookTime);
         }
 

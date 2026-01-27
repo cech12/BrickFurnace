@@ -13,14 +13,14 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.item.crafting.RecipeType;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.stream.Collectors;
 
 @JeiPlugin
@@ -31,8 +31,8 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
     private static BrickBlastingCategory blastingRecipeType;
 
     @Override
-    @Nonnull
-    public ResourceLocation getPluginUid() {
+    @NotNull
+    public Identifier getPluginUid() {
         return Constants.id("plugin_" + Constants.MOD_ID);
     }
 
@@ -49,7 +49,7 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
     }
 
     @Override
-    public void registerRecipes(@Nonnull IRecipeRegistration registration) {
+    public void registerRecipes(@NotNull IRecipeRegistration registration) {
         MinecraftServer server = BrickFurnaceMod.getServer();
         if (server != null) {
             RecipeMap recipeMap = server.getRecipeManager().recipes;
@@ -59,15 +59,15 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
 
             if (Services.CONFIG.areVanillaRecipesEnabled()) {
                 registration.addRecipes(smeltingRecipeType.getRecipeType(), recipeMap.byType(RecipeType.SMELTING).stream()
-                        .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().location()))
+                        .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
                         .map(recipe -> new RecipeHolder<>(recipe.id(), BrickSmeltingRecipe.convert(recipe.value(), server.registryAccess())))
                         .collect(Collectors.toList()));
                 registration.addRecipes(smokingRecipeType.getRecipeType(), recipeMap.byType(RecipeType.SMOKING).stream()
-                        .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().location()))
+                        .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
                         .map(recipe -> new RecipeHolder<>(recipe.id(), BrickSmokingRecipe.convert(recipe.value(), server.registryAccess())))
                         .collect(Collectors.toList()));
                 registration.addRecipes(blastingRecipeType.getRecipeType(), recipeMap.byType(RecipeType.BLASTING).stream()
-                        .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().location()))
+                        .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
                         .map(recipe -> new RecipeHolder<>(recipe.id(), BrickBlastingRecipe.convert(recipe.value(), server.registryAccess())))
                         .collect(Collectors.toList()));
             }
@@ -75,7 +75,7 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
     }
 
     @Override
-    public void registerRecipeCatalysts(@Nonnull IRecipeCatalystRegistration registration) {
+    public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
         registration.addCraftingStation(smeltingRecipeType.getRecipeType(), new ItemStack(Constants.BRICK_FURNACE_BLOCK.get()));
         registration.addCraftingStation(RecipeTypes.SMELTING_FUEL, new ItemStack(Constants.BRICK_FURNACE_BLOCK.get()));
         registration.addCraftingStation(smokingRecipeType.getRecipeType(), new ItemStack(Constants.BRICK_SMOKER_BLOCK.get()));
