@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import org.jetbrains.annotations.NotNull;
 
 public class BrickSmeltingRecipe extends AbstractCookingRecipe {

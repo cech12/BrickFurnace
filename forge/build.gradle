@@ -39,6 +39,10 @@ minecraft {
     }
 }
 
+test {
+    failOnNoDiscoveredTests = false
+}
+
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 repositories {
