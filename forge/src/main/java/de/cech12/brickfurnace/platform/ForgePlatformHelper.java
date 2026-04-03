@@ -2,6 +2,7 @@ package de.cech12.brickfurnace.platform;
 
 import de.cech12.brickfurnace.platform.services.IPlatformHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 
@@ -17,7 +18,7 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isModLoaded(String modId) {
-        return ModList.get().isLoaded(modId);
+        return ModList.isLoaded(modId);
     }
 
     @Override
@@ -27,11 +28,11 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return stack.getCraftingRemainder() != null && !stack.getCraftingRemainder().isEmpty();
+        return stack.getCraftingRemainder() != null && stack.getCraftingRemainder().count() > 0;
     }
 
     @Override
-    public ItemStack getCraftingRemainingItem(ItemStack stack) {
+    public ItemStackTemplate getCraftingRemainingItem(ItemStack stack) {
         return stack.getCraftingRemainder();
     }
 

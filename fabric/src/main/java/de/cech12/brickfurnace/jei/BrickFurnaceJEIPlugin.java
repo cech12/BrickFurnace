@@ -60,15 +60,15 @@ public class BrickFurnaceJEIPlugin implements IModPlugin {
             if (Services.CONFIG.areVanillaRecipesEnabled()) {
                 registration.addRecipes(smeltingRecipeType.getRecipeType(), recipeMap.byType(RecipeType.SMELTING).stream()
                         .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
-                        .map(recipe -> new RecipeHolder<>(recipe.id(), BrickSmeltingRecipe.convert(recipe.value(), server.registryAccess())))
+                        .map(recipe -> new RecipeHolder<>(recipe.id(), BrickSmeltingRecipe.convert(recipe.value())))
                         .collect(Collectors.toList()));
                 registration.addRecipes(smokingRecipeType.getRecipeType(), recipeMap.byType(RecipeType.SMOKING).stream()
                         .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
-                        .map(recipe -> new RecipeHolder<>(recipe.id(), BrickSmokingRecipe.convert(recipe.value(), server.registryAccess())))
+                        .map(recipe -> new RecipeHolder<>(recipe.id(), BrickSmokingRecipe.convert(recipe.value())))
                         .collect(Collectors.toList()));
                 registration.addRecipes(blastingRecipeType.getRecipeType(), recipeMap.byType(RecipeType.BLASTING).stream()
                         .filter(recipe -> Services.CONFIG.isRecipeAllowed(recipe.id().identifier()))
-                        .map(recipe -> new RecipeHolder<>(recipe.id(), BrickBlastingRecipe.convert(recipe.value(), server.registryAccess())))
+                        .map(recipe -> new RecipeHolder<>(recipe.id(), BrickBlastingRecipe.convert(recipe.value())))
                         .collect(Collectors.toList()));
             }
         }

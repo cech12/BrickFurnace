@@ -1,6 +1,7 @@
 package de.cech12.brickfurnace.platform.services;
 
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 
 /**
  * Common platform helper service interface.
@@ -40,6 +41,6 @@ public interface IPlatformHelper {
 
     boolean hasCraftingRemainingItem(ItemStack stack);
 
-    ItemStack getCraftingRemainingItem(ItemStack stack);
+    ItemStackTemplate getCraftingRemainingItem(ItemStack stack);
 
 }

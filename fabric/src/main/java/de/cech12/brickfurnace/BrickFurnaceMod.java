@@ -5,8 +5,8 @@ import de.cech12.brickfurnace.init.ModBlocks;
 import de.cech12.brickfurnace.init.ModItems;
 import de.cech12.brickfurnace.init.ModRecipeTypes;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -25,7 +25,7 @@ public class BrickFurnaceMod implements ModInitializer {
         //init POI types
         CommonLoader.initPoiStates(BuiltInRegistries.POINT_OF_INTEREST_TYPE::get);
         //Register item in the creative tab.
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(content -> {
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(content -> {
             content.accept(Constants.BRICK_FURNACE_ITEM.get());
             content.accept(Constants.BRICK_BLAST_FURNACE_ITEM.get());
             content.accept(Constants.BRICK_SMOKER_ITEM.get());

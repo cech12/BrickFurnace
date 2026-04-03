@@ -76,11 +76,11 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
                 if (entity.isBurning()) {
                     dirty = true;
                     if (Services.PLATFORM.hasCraftingRemainingItem(fuel)) {
-                        entity.items.set(1, Services.PLATFORM.getCraftingRemainingItem(fuel));
+                        entity.items.set(1, Services.PLATFORM.getCraftingRemainingItem(fuel).create());
                     } else if (!fuel.isEmpty()) {
                         fuel.shrink(1);
                         if (fuel.isEmpty()) {
-                            entity.items.set(1, Services.PLATFORM.getCraftingRemainingItem(fuel));
+                            entity.items.set(1, Services.PLATFORM.getCraftingRemainingItem(fuel).create());
                         }
                     }
                 }
@@ -113,7 +113,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
 
     private boolean canBurn(@Nullable RecipeHolder<?> recipe) {
         if (this.getLevel() != null && !this.items.getFirst().isEmpty() && recipe != null && recipe.value() instanceof AbstractCookingRecipe cookingRecipe) {
-            ItemStack recipeOutput = cookingRecipe.assemble(new SingleRecipeInput(this.items.getFirst()) , this.getLevel().registryAccess());
+            ItemStack recipeOutput = cookingRecipe.assemble(new SingleRecipeInput(this.items.getFirst()));
             if (!recipeOutput.isEmpty()) {
                 ItemStack output = this.items.get(OUTPUT);
                 if (output.isEmpty()) return true;
@@ -127,7 +127,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
     private void smeltItem(@Nullable RecipeHolder<?> recipe) {
         if (this.getLevel() != null && recipe != null && recipe.value() instanceof AbstractCookingRecipe cookingRecipe && this.canBurn(recipe)) {
             ItemStack itemstack = this.items.get(0);
-            ItemStack itemstack1 = cookingRecipe.assemble(new SingleRecipeInput(this.items.getFirst()), this.getLevel().registryAccess());
+            ItemStack itemstack1 = cookingRecipe.assemble(new SingleRecipeInput(this.items.getFirst()));
             ItemStack itemstack2 = this.items.get(2);
             if (itemstack2.isEmpty()) {
                 this.items.set(2, itemstack1.copy());
