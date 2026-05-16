@@ -1,3 +1,11 @@
 accessWidener v2 official
 
 accessible field net/minecraft/world/item/crafting/RecipeManager recipes Lnet/minecraft/world/item/crafting/RecipeMap;
+
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litTimeRemaining I
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litTotalTime I
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity cookingTimer I
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity cookingTotalTime I
+accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity consumeFuel (Lnet/minecraft/core/NonNullList;Lnet/minecraft/world/item/ItemStack;)V
+accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity canBurn (Lnet/minecraft/core/NonNullList;ILnet/minecraft/world/item/ItemStack;)Z
+accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity burn (Lnet/minecraft/core/NonNullList;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V
