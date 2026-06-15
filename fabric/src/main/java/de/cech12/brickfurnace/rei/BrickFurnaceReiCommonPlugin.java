@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.rei;
-/*
+
 import de.cech12.brickfurnace.Constants;
 import de.cech12.brickfurnace.crafting.BrickBlastingRecipe;
 import de.cech12.brickfurnace.crafting.BrickSmeltingRecipe;
@@ -57,7 +57,7 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
         public static DisplaySerializer<BrickSmeltingDisplay> SERIALIZER = serializer(BrickSmeltingDisplay::new);
 
         public BrickSmeltingDisplay(RecipeHolder<? extends AbstractCookingRecipe> recipe) {
-            super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value())), null))),
+            super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value()))))),
                     Optional.of(recipe.id().identifier()), recipe.value().experience(), recipe.value() instanceof BrickSmeltingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
 
@@ -80,7 +80,7 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
         public static DisplaySerializer<BrickSmokingDisplay> SERIALIZER = serializer(BrickSmokingDisplay::new);
 
         public BrickSmokingDisplay(RecipeHolder<? extends AbstractCookingRecipe> recipe) {
-            super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value())), null))),
+            super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value()))))),
                     Optional.of(recipe.id().identifier()), recipe.value().experience(), recipe.value() instanceof BrickSmokingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
 
@@ -103,7 +103,7 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
         public static DisplaySerializer<BrickBlastingDisplay> SERIALIZER = serializer(BrickBlastingDisplay::new);
 
         public BrickBlastingDisplay(RecipeHolder<? extends AbstractCookingRecipe> recipe) {
-            super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value())), null))),
+            super(List.of(EntryIngredients.ofIngredient((recipe.value()).input())), List.of(EntryIngredients.of(recipe.value().assemble(new SingleRecipeInput(new ItemStack(recipe.value().input().items().findFirst().get().value()))))),
                     Optional.of(recipe.id().identifier()), recipe.value().experience(), recipe.value() instanceof BrickBlastingRecipe ? recipe.value().cookingTime() : recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
 
@@ -123,4 +123,3 @@ public class BrickFurnaceReiCommonPlugin implements REICommonPlugin {
     }
 
 }
- */
