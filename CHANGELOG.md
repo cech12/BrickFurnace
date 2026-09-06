@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Added
 - re-added The One Probe support
 
+### Fixed
+- incompatibility with mods that are registering points of interest for butcher or armorer (NeoForge) (thanks to Dado and bigdighenry for the report) #60
+
 ### Changed
 - updated NeoForge to 26.1.2.94
 
