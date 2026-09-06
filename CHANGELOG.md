@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Added
 - re-added The One Probe support
 
+### Fixed
+- incompatibility with mods that are registering points of interest for butcher or armorer (NeoForge) (thanks to Dado and bigdighenry for the report) #60
+
 ## [1.21.11-4.10.0.0] - 2026-01-27
 ### Changed
 - updated to Minecraft 1.21.11 (Fabric 0.141.2+1.21.11, NeoForge 21.11.37-beta, Forge 61.0.5)

@@ -5,7 +5,7 @@ import de.cech12.brickfurnace.init.ModBlockEntityTypes;
 import de.cech12.brickfurnace.init.ModBlocks;
 import de.cech12.brickfurnace.init.ModItems;
 import de.cech12.brickfurnace.init.ModRecipeTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -14,8 +14,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.common.world.poi.ExtendPoiTypesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
 
 @SuppressWarnings("unused")
@@ -39,10 +39,9 @@ public class BrickFurnaceMod {
     }
 
     @SubscribeEvent
-    public static void register(RegisterEvent event) {
-        if (event.getRegistry() == BuiltInRegistries.POINT_OF_INTEREST_TYPE) {
-            event.register(BuiltInRegistries.POINT_OF_INTEREST_TYPE.key(), pointOfInterestTypeRegisterHelper -> CommonLoader.initPoiStates(BuiltInRegistries.POINT_OF_INTEREST_TYPE::get));
-        }
+    public static void register(ExtendPoiTypesEvent event) {
+        event.addBlockToPoi(PoiTypes.ARMORER, Constants.BRICK_BLAST_FURNACE_BLOCK.get());
+        event.addBlockToPoi(PoiTypes.BUTCHER, Constants.BRICK_SMOKER_BLOCK.get());
     }
 
     @SubscribeEvent
