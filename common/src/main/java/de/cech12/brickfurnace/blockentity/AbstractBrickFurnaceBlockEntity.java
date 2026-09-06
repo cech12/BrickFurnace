@@ -148,4 +148,16 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
         }
     }
 
+    public int getLitTotalTime() {
+        return this.dataAccess.get(0);
+    }
+
+    public int getCookingTimer() {
+        return this.dataAccess.get(2);
+    }
+
+    public int getCookingTotalTime() {
+        return this.dataAccess.get(3);
+    }
+
 }
