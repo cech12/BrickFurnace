@@ -1,5 +1,5 @@
 package de.cech12.brickfurnace.compat;
-/*
+
 import de.cech12.brickfurnace.Constants;
 import de.cech12.brickfurnace.blockentity.AbstractBrickFurnaceBlockEntity;
 import mcjty.theoneprobe.api.CompoundText;
@@ -14,7 +14,7 @@ import mcjty.theoneprobe.api.TextStyleClass;
 import mcjty.theoneprobe.apiimpl.styles.IconStyle;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -35,10 +35,10 @@ public class TOPCompat {
         public Void apply(ITheOneProbe probe) {
             probe.registerProvider(new IProbeInfoProvider() {
                 private static final IIconStyle FIRE_STYLE =  new IconStyle().bounds(8, 8).textureBounds(8, 64);
-                private static final ResourceLocation FIRE_ICON = ResourceLocation.withDefaultNamespace("textures/block/campfire_fire.png");
+                private static final Identifier FIRE_ICON = Identifier.withDefaultNamespace("textures/block/campfire_fire.png");
 
                 @Override
-                public ResourceLocation getID() {
+                public Identifier getID() {
                     return Constants.id("brickfurnaceinfo");
                 }
 
@@ -72,4 +72,3 @@ public class TOPCompat {
         }
     }
 }
- */

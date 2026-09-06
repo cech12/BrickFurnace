@@ -22,7 +22,7 @@ dependencies {
     implementation("me.shedaniel.cloth:cloth-config-neoforge:$cloth_config_version")
     implementation("dev.architectury:architectury-neoforge:$architectury_version")
 
-    //implementation("mcjty.theoneprobe:theoneprobe:$top_version") {transitive = false}
+    implementation("mcjty.theoneprobe:theoneprobe:$top_version") {transitive = false}
 
     //runtimeOnly("blusunrize.immersiveengineering:ImmersiveEngineering:${project.immersive_engineering_version}")
     //compileOnly("blusunrize.immersiveengineering:ImmersiveEngineering:${project.immersive_engineering_version}:api")
