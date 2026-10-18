@@ -6,6 +6,7 @@ accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEnti
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litTotalTime I
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity cookingTimer I
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity cookingTotalTime I
-accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity consumeFuel (Lnet/minecraft/core/NonNullList;Lnet/minecraft/world/item/ItemStack;)V
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity speedMultiplier F
+accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity consumeFuel (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/NonNullList;Lnet/minecraft/world/item/ItemStack;)V
 accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity canBurn (Lnet/minecraft/core/NonNullList;ILnet/minecraft/world/item/ItemStack;)Z
 accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity burn (Lnet/minecraft/core/NonNullList;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V

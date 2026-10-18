@@ -1,6 +1,5 @@
 package de.cech12.brickfurnace;
 
-import de.cech12.brickfurnace.compat.TOPCompat;
 import de.cech12.brickfurnace.init.ModBlockEntityTypes;
 import de.cech12.brickfurnace.init.ModBlocks;
 import de.cech12.brickfurnace.init.ModItems;
@@ -9,7 +8,6 @@ import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -32,10 +30,12 @@ public class BrickFurnaceMod {
 
         CommonLoader.init();
 
+        /*
         //The One Probe registration.
         if (ModList.get().isLoaded("theoneprobe") && !ModList.get().isLoaded("topaddons")) {
             TOPCompat.register();
         }
+         */
     }
 
     @SubscribeEvent

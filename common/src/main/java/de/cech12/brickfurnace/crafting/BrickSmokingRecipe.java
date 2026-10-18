@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BrickSmokingRecipe extends AbstractCookingRecipe {
 
-    public static final MapCodec<BrickSmokingRecipe> MAP_CODEC = cookingMapCodec(BrickSmokingRecipe::new, 100);
+    public static final MapCodec<BrickSmokingRecipe> MAP_CODEC = cookingMapCodec(BrickSmokingRecipe::new);
     public static final StreamCodec<RegistryFriendlyByteBuf, BrickSmokingRecipe> STREAM_CODEC = cookingStreamCodec(BrickSmokingRecipe::new);
     public static final RecipeSerializer<BrickSmokingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
 

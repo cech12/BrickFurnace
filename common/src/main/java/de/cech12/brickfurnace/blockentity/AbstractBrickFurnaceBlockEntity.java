@@ -2,6 +2,7 @@ package de.cech12.brickfurnace.blockentity;
 
 import de.cech12.brickfurnace.platform.Services;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
@@ -37,6 +39,9 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
     protected ItemStack failedMatch = ItemStack.EMPTY;
 
     public static void tick(Level level, BlockPos pos, BlockState state, AbstractBrickFurnaceBlockEntity entity) {
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
         boolean changed = false;
         boolean isLit;
         boolean wasLit;
@@ -62,11 +67,19 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
                     ItemStack burnResult = recipe.value().assemble(input);
                     if (!burnResult.isEmpty() && entity.canBurn(entity.items, maxStackSize, burnResult)) {
                         if (!isLit) {
-                            int newLitTime = entity.getBurnDuration(level.fuelValues(), fuel);
+                            int newLitTime = entity.getBurnDuration(serverLevel, fuel);
+                            float newSpeedMultiplier = entity.getSpeedMultiplier(serverLevel, fuel);
                             entity.litTimeRemaining = newLitTime;
                             entity.litTotalTime = newLitTime;
+                            entity.speedMultiplier = newSpeedMultiplier;
+                            if (entity.cookingTotalTime > 0 && entity.cookingTimer < entity.cookingTotalTime) {
+                                float completionRatio = (float) entity.cookingTimer / (float) entity.cookingTotalTime;
+                                entity.cookingTotalTime = getTotalCookTime(recipe, entity);
+                                entity.cookingTimer = (int) Math.ceil((completionRatio * (float) entity.cookingTotalTime));
+                            }
+
                             if (newLitTime > 0) {
-                                entity.consumeFuel(entity.items, fuel);
+                                entity.consumeFuel(serverLevel, entity.getBlockPos(), entity.items, fuel);
                                 isLit = true;
                                 changed = true;
                             }
@@ -76,7 +89,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
                             ++entity.cookingTimer;
                             if (entity.cookingTimer == entity.cookingTotalTime) {
                                 entity.cookingTimer = 0;
-                                entity.cookingTotalTime = entity.getTotalCookTime(recipe); //changed because of configurable cooking time factor
+                                entity.cookingTotalTime = getTotalCookTime(recipe, entity);
                                 entity.burn(entity.items, ingredient, burnResult);
                                 entity.setRecipeUsed(recipe);
                                 changed = true;
@@ -106,13 +119,21 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
         }
     }
 
-    private int getTotalCookTime(RecipeHolder<? extends AbstractCookingRecipe> rec) {
-        if (rec == null) {
-            return 200;
-        } else if (this.specificRecipeType.getClass().isInstance(rec.value().getType())) {
-            return rec.value().cookingTime();
+    @Override
+    protected int getBurnDuration(@NotNull ServerLevel level, @NotNull ItemStack fuelItem) {
+        return (int) (super.getBurnDuration(level, fuelItem) * Services.CONFIG.getBurnTimeFactor());
+    }
+
+    private static int getTotalCookTime(RecipeHolder<? extends AbstractCookingRecipe> recipe, AbstractBrickFurnaceBlockEntity entity) {
+        int cookingTotalTime;
+        if (recipe == null) {
+            cookingTotalTime = 200;
+        } else if (entity.specificRecipeType.getClass().isInstance(recipe.value().getType())) {
+            cookingTotalTime = recipe.value().cookingTime();
+        } else {
+            cookingTotalTime = (int) (recipe.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
         }
-        return (int) (rec.value().cookingTime() * Services.CONFIG.getCookTimeFactor());
+        return entity.speedMultiplier > 0.0F ? (int)Math.ceil(((float)cookingTotalTime / entity.speedMultiplier)) : cookingTotalTime;
     }
 
     public RecipeHolder<? extends AbstractCookingRecipe> getRecipe() {
@@ -122,7 +143,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
         }
         SingleRecipeInput recipeInput = new SingleRecipeInput(input);
         if (this.level != null && curRecipe != null && curRecipe.value().matches(recipeInput, level)) {
-            this.cookingTotalTime = getTotalCookTime(curRecipe);
+            this.cookingTotalTime = getTotalCookTime(curRecipe, this);
             return curRecipe;
         } else {
             RecipeHolder<? extends AbstractCookingRecipe> rec = null;
@@ -143,7 +164,7 @@ public abstract class AbstractBrickFurnaceBlockEntity extends AbstractFurnaceBlo
             } else {
                 failedMatch = ItemStack.EMPTY;
             }
-            this.cookingTotalTime = getTotalCookTime(rec);
+            this.cookingTotalTime = getTotalCookTime(rec, this);
             return curRecipe = rec;
         }
     }
